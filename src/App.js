@@ -1,11 +1,14 @@
 import Navbar from './components/navbar/Navbar.js';
 import Footer from './components/footer/Footer.js';
+import './App.css';
 
 const App = () => {
     return (
-      <div>
+      <div className="page-container">
+        <div className="content-wrap">
           <Navbar />
-          <Footer />
+        </div>
+        <Footer />
       </div>
     );
 };
