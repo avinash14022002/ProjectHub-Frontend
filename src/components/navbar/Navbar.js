@@ -18,7 +18,7 @@ const Navbar = () => {
             <img src={logo} alt='logo' />
           </NavLink>
           <NavLink to='/'>
-            <h1>ProjectHub</h1>  
+            <h1>Project Hub</h1>  
           </NavLink>
         </NavMenu>
         <Bars />
