@@ -7,7 +7,7 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElements';
-import logo from '../../images/logo.svg'
+import logo from '../../assets/logo.svg'
 
 const Navbar = () => {
   return (

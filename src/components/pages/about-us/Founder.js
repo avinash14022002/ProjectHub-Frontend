@@ -2,15 +2,23 @@ import React from 'react';
 import './About.css';
 
 const Founder = (props) => {
+    
+    const onLinkedInClick = (e) => {
+        e.preventDefault();
+        if(props.linkedInURL !== '') {
+            window.open(props.linkedInURL);
+        } else {
+            window.alert(`Link to LinkedIn profile doesn't exist for the founder ${props.firstName + " " + props.lastName}`);
+        }
+    }
+    
     return (
         <div>
-            
             <section className="common-section about-us">
-            <h1 className="mini-title">Our Team</h1>
                 <div className="container mb-5">
                         <div className="row">
                             <div className="col-12 col-lg-5 text-center about-us-img">
-                                <img src={props.DP} alt="aboutusImg1" />
+                                <img src={props.displayPicture} alt={`Founder-Img-${props.firstName + " " + props.lastName}`} />
                             </div>
                             <div className="col-12 col-lg-7 about-us-list">
                                 <h2 className="main-heading">{props.firstName + " " + props.lastName}</h2>
@@ -23,12 +31,7 @@ const Founder = (props) => {
                                         </div>
                                     </div>
                                 <br />
-                                <button className="btn-style btn-style-border" 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.location.href=`${props.linkedInURL}`;
-                                    }}>LinkedIn
-                                </button>
+                                <button className="btn-style btn-style-border" onClick={onLinkedInClick}>LinkedIn</button>
                             </div>
                         </div>
                     </div>
