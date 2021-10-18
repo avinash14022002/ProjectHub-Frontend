@@ -7,9 +7,8 @@ function SearchBar({placeholder, data}){
         <div className="search">
             <div className="searchInputs">
                 <input type="text" placeholder={placeholder}/>
-                <div className= "searchIcon">
-                   <SearchIcon color="black"/>
-                   
+                <div className="searchIcon">
+                   <SearchIcon color="black"/>     
                 </div>
             </div>
         </div>

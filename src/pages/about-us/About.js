@@ -43,7 +43,7 @@ const About = () => {
         }
     ];
     
-    const imagesSrc = require.context('../../../assets/about-us', true);
+    const imagesSrc = require.context('../../assets/about-us', true);
 
     const listOfFounders = foundersData.map((founder) => {
             const founderImgSrc = imagesSrc(`./${founder.displayPicture}`).default;

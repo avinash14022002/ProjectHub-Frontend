@@ -15,12 +15,12 @@ import {
   Lb,
   ManImage
 } from './LandingPageElements';
-import Pink from "../../../assets/landing-page/BlobPink.png";
-import Purple from "../../../assets/landing-page/BlobPurple.png";
-import White from "../../../assets/landing-page/BlobWhite.png";
+import Pink from "../../assets/landing-page/BlobPink.png";
+import Purple from "../../assets/landing-page/BlobPurple.png";
+import White from "../../assets/landing-page/BlobWhite.png";
+import Arrow from "../../assets/landing-page/ArrowRight.svg"
+import Man from "../../assets/landing-page/ProjectHub1.png";
 import './LandingPage.css';
-import Arrow from "../../../assets/landing-page/ArrowRight.svg"
-import Man from "../../../assets/landing-page/ProjectHub1.png";
 
 const LandingPage = () => {
     return (
