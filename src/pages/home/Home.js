@@ -4,17 +4,15 @@ import AllProjects from '../all-projects/AllProjects';
 import ProjectDetails from '../project-detailed-page/ProjectDetails';
 
 const Home = () => {
-    if(true) {
+    if(false) {
         return(
             <div>
-                {/* <AllProjects/> */}
-                <ProjectDetails/>
+                <AllProjects />
             </div>
         );
         
     }
-    
-    
+
     return <LandingPage />
 };
 
