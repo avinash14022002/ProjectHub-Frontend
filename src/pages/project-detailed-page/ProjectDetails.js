@@ -39,8 +39,8 @@ export default function ProjectDetails() {
                     <button className="ProjectTechnologyTag">PostgreSQL</button> */}
                   </div>
   
-                  <button className="PaperButton" onClick={event=> window.location.href= projectDetails.paperUrl}>Paper <i className="bi bi-download"></i> </button>
-                  <button className="PPTButton" onClick={event=> window.location.href= projectDetails.pptUrl}>PPT <i className="bi bi-download"></i> </button>
+                  <button className="PaperButton" onClick={event=> window.open(projectDetails.paperUrl, '_blank')}>Paper <i className="bi bi-download"></i> </button>
+                  <button className="PPTButton" onClick={event=> window.open(projectDetails.pptUrl, '_blank')}>PPT <i className="bi bi-download"></i> </button>
               </div>
           </div>
           <div className="DescriptionContainer">
