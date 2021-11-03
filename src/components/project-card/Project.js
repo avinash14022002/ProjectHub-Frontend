@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
-import { MDBCard, MDBCardHeader, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn } from 'mdb-react-ui-kit';
 import {
   Link,
 } from "react-router-dom";
@@ -12,22 +11,16 @@ const Project = (props) => {
   useEffect(() => {
     setProject(props.projectData);
   }, []);
-  
-  // <MDBCard className="card">
-  //     <MDBCardHeader><h5>{project.name}</h5></MDBCardHeader>
-  //     <MDBCardBody>
-  //       <MDBCardTitle>{project.domain}</MDBCardTitle>
-  //       <MDBCardText>{project.description}</MDBCardText> 
-  //       <MDBBtn href=''>Go somewhere</MDBBtn>
-  //     </MDBCardBody>
-  // </MDBCard>
 
   return (
-    <Card border="primary" style={{ width: '75rem' }}>
-      <Link to={`/project-details/${project.projectId}`}><Card.Header>{project.projectTitle}</Card.Header></Link>
-      <Card.Body>
-        <Card.Title>{project.projectDomain}</Card.Title>
-        <Card.Text>{project.description}</Card.Text>
+    <Card className="card" border="primary" style={{ width: '60rem' }}>
+      <Link to={`/project-details/${project.projectId}`}><Card.Header style={{ color: "black"}}>{project.projectTitle}</Card.Header></Link>
+      <Card.Body >
+        <Card.Title style={{ color: "black"}}>{project.projectDomain}</Card.Title>
+        <Card.Text style={{ color: "black"}}>{project.description}</Card.Text>
+        <button className="ProjectTechnologyTag" style={{ color: "black"}}>{project.projectTag1}</button>
+        <button className="ProjectTechnologyTag" style={{ color: "black"}}>{project.projectTag2}</button>
+        <button className="ProjectTechnologyTag" style={{ color: "black"}}>{project.projectTag3}</button>
       </Card.Body>
     </Card>
   );

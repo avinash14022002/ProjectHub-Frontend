@@ -19,7 +19,6 @@ const ProjectDetails = () => {
       return response.data;
     })
     .then(projectData => {
-      console.log(projectData);
       setProjectDetails(projectData);
     });
   }, [projectUrl])
@@ -29,20 +28,20 @@ const ProjectDetails = () => {
       <MDBCardBody>
         <div className="MainContainer">
             <div className="ProjectPreview">
-                <img className="ProjectPreviewImg" src={projectDetails.imageUrl} alt="Project Preview"/>
+                <img className="ProjectPreviewImg"  style={{ color: "black"}} src={projectDetails.imageUrl} alt="Project Preview"/>
             </div>
 
             <div className="ProjectData">
-                <h1 className="ProjectTitle">{projectDetails.projectTitle}</h1>
+                <h1 className="ProjectTitle" style={{ color: "black"}}>{projectDetails.projectTitle}</h1>
                 <div>
-                  <p className="ProjectDomain">Domain : <button className="ProjectDomainName">{projectDetails.projectDomain}</button></p>
+                  <p className="ProjectDomain" style={{ color: "black"}}>Domain : <button className="ProjectDomainName" style={{ color: "black"}}>{projectDetails.projectDomain}</button></p>
                 </div>
                 
-                <h3 className="ProjectTechnology">Technology : </h3>
+                <h3 className="ProjectTechnology" style={{ color: "black"}}>Technology : </h3>
                 <div>
-                  <button className="ProjectTechnologyTag">{projectDetails.projectTag1}</button>
-                  <button className="ProjectTechnologyTag">{projectDetails.projectTag2}</button>
-                  <button className="ProjectTechnologyTag">{projectDetails.projectTag3}</button>
+                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag1}</button>
+                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag2}</button>
+                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag3}</button>
                   {/* <button className="ProjectTechnologyTag">JavaScript</button>
                   <button className="ProjectTechnologyTag">PostgreSQL</button> */}
                 </div>
@@ -51,26 +50,26 @@ const ProjectDetails = () => {
                 <button className="PPTButton" onClick={event => window.open(projectDetails.pptUrl, '_blank')}>PPT <i className="bi bi-download"></i> </button>
             </div>
         </div>
-        <div className="DescriptionContainer">
-          <p className="ProjectDescription"> {projectDetails.description} </p> 
+        <div className="DescriptionContainer" style={{ color: "black"}}>
+          <p className="ProjectDescription" style={{ color: "black"}}> {projectDetails.description} </p> 
         </div>
         
         {/* {REMOVE HARDCODED DATA} */}
-        <div className="GuidedContainer">
-          <h2><b>Guided By :</b></h2>
-          <div className="GuideDetails">
-            <h5><i className="bi bi-person-square"></i> Ashwini Shingare</h5>
+        <div className="GuidedContainer" >
+          <h2><b style={{ color: "black"}}>Guided By :</b></h2>
+          <div className="GuideDetails" style={{ color: "black"}}>
+            <h5 style={{ color: "black"}}><i className="bi bi-person-square" style={{ color: "black"}}></i> Ashwini Shingare</h5>
           </div>
           
         </div>
 
-        <div className="ContributedByContainer">
-          <h2><b>Contributed By :</b></h2>
+        <div className="ContributedByContainer" style={{ color: "black"}}>
+          <h2><b style={{ color: "black"}}>Contributed By :</b></h2>
           <ul className="list-unstyled">
-            <li><h5><i className="bi bi-person-square"></i> Anubhav Pabby</h5></li>
-            <li><h5><i className="bi bi-person-square"></i> Anjali Asolkar</h5></li>
-            <li><h5><i className="bi bi-person-square"></i> Avinash Vijayvargiya</h5></li>
-            <li><h5><i className="bi bi-person-square"></i> Dhanshree Pajankar</h5></li>
+            <li><h5 style={{ color: "black"}}><i className="bi bi-person-square" style={{ color: "black"}}></i> Anubhav Pabby</h5></li>
+            <li><h5 style={{ color: "black"}}><i className="bi bi-person-square" style={{ color: "black"}}></i> Anjali Asolkar</h5></li>
+            <li><h5 style={{ color: "black"}}><i className="bi bi-person-square" style={{ color: "black"}}></i> Avinash Vijayvargiya</h5></li>
+            <li><h5 style={{ color: "black"}}><i className="bi bi-person-square" style={{ color: "black"}}></i> Dhanshree Pajankar</h5></li>
           </ul>
         </div>        
       </MDBCardBody>

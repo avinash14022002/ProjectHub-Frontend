@@ -23,7 +23,7 @@ const ProjectsList = (props) => {
     
     return (
         <div>
-            <ul>
+            <ul className="list-unstyled">
                 {listItems}
             </ul>
         </div>
