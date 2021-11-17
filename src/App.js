@@ -8,6 +8,7 @@ import Home from './pages/home/Home'
 import AllProjects from './pages/all-projects/AllProjects';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProjectDetails from './pages/project-detailed-page/ProjectDetails';
+import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/contact' component={Contact} />
             <Route exact path='/project-details/:projectId' component={ProjectDetails} />
             <Route exact path='/all-projects' component={AllProjects} />
+            <Route exact path='/completed-guided-projects' component={CompletedGuidedProjects} />
           </Switch>
         </div>
         <Footer />

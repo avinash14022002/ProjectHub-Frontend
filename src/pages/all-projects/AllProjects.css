@@ -11,6 +11,7 @@
 .Filter{
     margin-right: 16px;
     align-self: stretch;
+    
 }
 .SearchBar{
     margin-top: 5px;
@@ -19,4 +20,5 @@
 }
 .Cards{
     color: black;
+    margin-top: 48px;
 }

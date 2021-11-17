@@ -13,7 +13,7 @@ const Project = (props) => {
   }, []);
 
   return (
-    <Card className="card" border="primary" style={{ width: '60rem' }}>
+    <Card className="card" border="primary" style={{ width: '60rem' , backgroundColor:'LightGray'}}>
       <Link to={`/project-details/${project.projectId}`}><Card.Header style={{ color: "black"}}>{project.projectTitle}</Card.Header></Link>
       <Card.Body >
         <Card.Title style={{ color: "black"}}>{project.projectDomain}</Card.Title>
