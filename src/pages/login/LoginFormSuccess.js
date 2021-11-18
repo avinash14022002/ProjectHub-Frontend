@@ -21,7 +21,9 @@ const LoginFormSuccess = () => {
     <div className='form-content-right'>
       <h1 className='form-success'>You have successfully Signed In!</h1>
       {/* <img className='form-img-2' src={SignedIn} alt='successfully-signed-in-img' /> */}
-      <button className='btn btn-primary' onClick={redirectToHome}>Go Back To HomePage</button>
+      <a href='/all-projects'>
+        <button className='btn btn-primary' onClick={redirectToHome}>Go Back To HomePage</button>
+      </a>
       {/* <Redirect to='/all-projects'>
         <h1 className='form-success'>Redirecting you to the home page</h1>
       </Redirect> */}
