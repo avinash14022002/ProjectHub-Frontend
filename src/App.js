@@ -27,7 +27,9 @@ function App() {
               <Route exact path='/about' component={About} />
               <Route exact path='/contact' component={Contact} />
               <Route exact path='/project-details/:projectId' component={ProjectDetails} />
-              <Route exact path='/all-projects' component={AllProjects} />
+              <Route exact path='/all-projects'>
+                <AllProjects url="http://localhost:8080/api/studentProject" />
+              </Route>
               <Route exact path='/student/completed-projects' component={CompletedGuidedProjects} />
               <Route exact path='/teacher/guided-projects' component={CompletedGuidedProjects} />
               <Route exact path='/admin/input-students-data'> 

@@ -5,7 +5,7 @@ import ProjectsList from '../../components/projects-list/ProjectsList'
 import './AllProjects.css';
 
 
-const AllProjects = () => { 
+const AllProjects = ({ url }) => { 
     return (
         <div>
             <div className="SearchBar">
@@ -16,7 +16,7 @@ const AllProjects = () => {
                     <Filter />
                 </div>
                 <div className="Cards" style={{ color: "black" }}>
-                    <ProjectsList url="http://localhost:8080/api/studentProject" />
+                    <ProjectsList url={url} />
                 </div>
             </div>
         </div>

@@ -11,7 +11,8 @@ const ProjectsList = (props) => {
                 return response.data;
             })
             .then((data) => {
-                setProjects(data);
+                const projectsData = data.filter(project => project.closed === '1')
+                console.log(projectsData);
             });
     }, []);
    
