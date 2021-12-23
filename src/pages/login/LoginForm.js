@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Spaceship from '../../assets/login/spaceship.svg';
 import validateInfo from './validateInfo';
 import axios from 'axios';
+import { LoginContext } from '../../contexts/LoginContext';
 import './LoginForm.css';
 
 const LoginForm = ({role, url}) => {
+
+  const { userAuthenticationStatus, setUserAuthenticationStatus, userSignInInfo, setUserSignInInfo } = useContext(LoginContext);
 
   const [userData, setUserData] = useState({
     userNo: '',
@@ -14,9 +17,7 @@ const LoginForm = ({role, url}) => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    // if (errors.numOfErrors === 0 && isSubmitting) {
-    //   setIsSubmitted(true);
-    // }
+    
   },[errors]);
 
   const handleSignInRequest = (signInUrl, signInValues) => {
@@ -28,13 +29,23 @@ const LoginForm = ({role, url}) => {
         return response.data;
       }
     }).then(function (data) {
-        console.log(data);
         localStorage.setItem('login', JSON.stringify({
           token : "Bearer " + data.jwt,
-          role : role 
+          role : role,
+          userData : {
+            userNo : data.username,
+            username : data.firstName + ' ' + data.lastname
+          }
         }));
+
+        if(localStorage.getItem('login') !== null) {
+          setUserAuthenticationStatus(true);
+          setUserSignInInfo(JSON.parse(localStorage.getItem('login')));
+        }
     }).catch(function (error) {
         console.log(error);
+        setUserAuthenticationStatus(false);
+
         if(error.response && error.response.status === 403) {
           if(role === 'student') {
             setErrors({password : "Combination of GR/PR No and Password is wrong"});
