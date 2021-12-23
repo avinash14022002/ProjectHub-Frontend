@@ -39,22 +39,23 @@ const Navbar = (props) => {
             Contact
           </NavLink> */}
           {props.role === 'unassigned' ?
-            (<Dropdown>
+          (<Dropdown>
               <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
-                Sign In
+                {props.buttonName}
               </Dropdown.Toggle>
 
               <Dropdown.Menu variant="dark">
                 <DropdownElement to='/student/sign-in'>Student SignIn</DropdownElement>
                 <DropdownElement to='/teacher/sign-in'>Teacher SignIn</DropdownElement>
+                <DropdownElement to='/admin/sign-in'>Admin SignIn</DropdownElement>
               </Dropdown.Menu>
             </Dropdown>)
             : (<Dropdown>
               <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
-                Sign Out
+                {props.buttonName}
               </Dropdown.Toggle>
             </Dropdown>
-            )
+          )
         }
         </NavMenu>
       </Nav>

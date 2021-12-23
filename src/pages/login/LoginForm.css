@@ -53,6 +53,15 @@
     margin-top: 80px;
     color: #fff;
 }
+
+.form-success-btn {
+    /* position: absolute;
+    margin-top: 10em; */
+    /* top: 50%; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%); */
+}
   
 .form-content-right {
     border-radius: 0 10px 10px 0;

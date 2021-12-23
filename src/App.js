@@ -24,11 +24,20 @@ function App() {
             <Route exact path='/project-details/:projectId' component={ProjectDetails} />
             <Route exact path='/all-projects' component={AllProjects} />
             <Route exact path='/completed-guided-projects' component={CompletedGuidedProjects} />
-            <Route path='/student/sign-in' exact> 
-                <LoginForm role="student" url="http://localhost:8080/v1/login" />
+            <Route exact path='/admin/input-students-data'> 
+               {/* To be Entered by Dhanashree */}
             </Route>
-            <Route path='/teacher/sign-in' exact> 
-                <LoginForm role="teacher" url="http://localhost:8080" />
+            <Route exact path='/admin/input-teachers-data'> 
+                {/* To be Entered by Dhanashree */}
+            </Route>
+            <Route exact path='/student/sign-in'> 
+                <LoginForm role="student" url="http://localhost:8080/studentlogin" />
+            </Route>
+            <Route exact path='/teacher/sign-in'> 
+                <LoginForm role="teacher" url="http://localhost:8080/teacherlogin" />
+            </Route>
+            <Route exact path='/admin/sign-in'> 
+                <LoginForm role="admin" url="http://localhost:8080/adminlogin" />
             </Route>
           </Switch>
         </div>
