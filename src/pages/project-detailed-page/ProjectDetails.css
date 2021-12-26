@@ -1,0 +1,113 @@
+.card{
+    height: auto;
+    width: 90%;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+.MainContainer{
+    padding: 2% 10%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.ProjectPreview{
+    width: 50%;
+}
+.ProjectPreviewImg{
+    width: 100%;
+}
+.ProjectData{
+    width: 50%;
+    margin: 16px;
+}
+.ProjectTitle{
+    font-size: 48px;
+    font-weight: 600;
+}
+.ProjectDomain{
+    font-size: 20px;
+    color: rgba(0,0,0,0.8);
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+.ProjectTechnology{
+    font-size: 25px;
+    color: rgba(0,0,0,1);
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.ProjectTechnologyTag{
+    background-color: rgb(131, 129, 129);
+    border-radius: 20px;
+    border: 0;
+    padding: 5px 20px;
+    min-width: 80px;
+    text-align: center;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+.ProjectDomainName{
+    background-color: rgb(190, 190, 190);
+    border-radius: 10px;
+    border: 0;
+    padding: 5px 20px;
+    min-width: 80px;
+    text-align: center;
+    margin-left: 12px;
+}
+.PaperButton{
+    color: white;
+    background-color: rgb(1, 139, 231);
+    font-size: 20px;
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 36px;
+    margin-right: 30px;
+}
+.PPTButton{
+    color: white;
+    background-color: rgb(1, 139, 231);
+    font-size: 20px;
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 36px;
+    margin-right: 30px;
+}
+.DescriptionContainer{
+    padding: 2% 10%;
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.ProjectDescription{
+    font-size: 20px;
+    color: rgba(0,0,0,1);
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+.GuidedContainer{
+    padding: 0% 10%;
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: auto;
+    /* align-items: center; */
+}
+.ContributedByContainer{
+    padding: 2% 10%;
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: auto;
+    /* align-items: center; */
+}

@@ -15,12 +15,12 @@ import {
   Lb,
   ManImage
 } from './LandingPageElements';
-import Pink from "../../../assets/landing-page/BlobPink.png";
-import Purple from "../../../assets/landing-page/BlobPurple.png";
-import White from "../../../assets/landing-page/BlobWhite.png";
+import Pink from "../../assets/landing-page/BlobPink.png";
+import Purple from "../../assets/landing-page/BlobPurple.png";
+import White from "../../assets/landing-page/BlobWhite.png";
+import Arrow from "../../assets/landing-page/ArrowRight.svg"
+import Man from "../../assets/landing-page/ProjectHub1.png";
 import './LandingPage.css';
-import Arrow from "../../../assets/landing-page/ArrowRight.svg"
-import Man from "../../../assets/landing-page/ProjectHub1.png";
 
 const LandingPage = () => {
     return (
@@ -48,7 +48,7 @@ const LandingPage = () => {
                       </Topic>
                       <Title>Project Hub</Title>
                       <SubText>All in one portal for Projects and Assignments !</SubText>
-                      <Link to="/sign-in">
+                      <Link to="/student/sign-in">
                         <CTA>
                             Get started &nbsp;
                             <img src={Arrow} alt="cta" width="100" height="100" />

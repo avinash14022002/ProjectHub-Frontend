@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
+* {
+  font-family: 'Sora', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+  /*button styling*/
+
+.btn-style {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 2rem;
+  color: #fff;
+  background-color:#566573;
+  font-size: 1rem;
+}
+
+.btn-style:first-child {
+  margin-right: 2rem;
+}
+
+.btn-style:hover {
+  border: 0.1rem solid #566573;
+  background-color: #566573;
+  color: #566573;
+  box-shadow: 0 0.2rem 0.5rem rgba(32, 147, 241, 0.5);
+}
+
+.btn-style-border {
+  border: 0.1rem solid #566573;
+  background-color: #566573;
+  color: var(--primary-color);
+  box-shadow: 0 0.2rem 0.5rem rgba(57, 57, 58, 0.5);
+}
+
+.btn-style-border:hover {
+  color: #fff;
+  background-color: #566573;
+}
+
+
+/*info section*/
+
+.common-section {
+  margin: 7rem 0;
+}
+
+.about-us img {
+  width: 50%;
+  height: 90%;
+  margin-top: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.8rem 0.8rem;
+  border-radius: 0.9rem;
+}
+
+.about-us .mini-title {
+  font-weight: bold;
+  margin: 3rem 0;
+  text-align: center;
+  font-size: 3 rem;
+}
+
+.about-us .main-heading {
+  font-weight: bolder;
+}
+
+.about-us-data {
+  padding-left: 2rem;
+}
+
+.about-us .about-us-data p {
+  margin: 1rem 0;
+}
+  

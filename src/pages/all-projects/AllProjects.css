@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
+.MainContainer{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.Filter{
+    margin-right: 16px;
+    align-self: stretch;
+    
+}
+.SearchBar{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+.Cards{
+    color: black;
+    margin-top: 48px;
+}
