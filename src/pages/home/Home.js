@@ -4,6 +4,8 @@ import AllProjects from '../all-projects/AllProjects';
 import ProjectDetails from '../project-detailed-page/ProjectDetails';
 import UploadStudents from '../upload-students/UploadStudents';
 import UploadTeachers from '../upload-teachers/UploadTeachers';
+import ExistingTeachers from '../existing-teachers/ExistingTeachers';
+import ExistingStudents from '../existing-students/ExistingStudents';
 
 const Home = () => {
     if(true) {
@@ -11,7 +13,9 @@ const Home = () => {
             <div>
                 {/* <AllProjects /> */}
                 {/* <UploadStudents/> */}
-                <UploadTeachers/>
+                {/* <UploadTeachers/> */}
+                {/* <ExistingTeachers/> */}
+                {/* <ExistingStudents/> */}
             </div>
         );
         

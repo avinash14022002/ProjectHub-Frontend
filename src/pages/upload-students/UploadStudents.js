@@ -3,6 +3,7 @@ import MaterialTable from '@material-table/core';
 import { makeStyles } from '@material-ui/core/styles';
 import XLSX from 'xlsx';
 import './UploadStudents.css';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -43,6 +44,7 @@ const UploadStudents = () => {
 
     const importExcel=(e)=>{
         const file = e.target.files[0]
+        setFileSelected(e.target.files[0])
 
         const reader = new FileReader()
         reader.onload=(event)=>{
@@ -84,6 +86,20 @@ const UploadStudents = () => {
         }
     }
 
+    const [fileSelected, setFileSelected] = useState('') 
+
+    const handleUpload = () =>{
+        let formData = new FormData()
+        formData.append("file", fileSelected)
+
+        axios.post(
+            "http://localhost:8080/api/uploadStudent", 
+            formData
+        ).then((response)=>{
+            console.log(response);
+        });
+    };
+
     return(
        
         <div>
@@ -109,7 +125,7 @@ const UploadStudents = () => {
                 
             </div>
             <div className='button'>
-                <button className='saveButton'>Upload</button>
+                <button className='saveButton' onClick={handleUpload}>Upload</button>
             </div>
             
         </div>
