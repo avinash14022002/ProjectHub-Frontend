@@ -48,7 +48,7 @@ const LandingPage = () => {
                       </Topic>
                       <Title>Project Hub</Title>
                       <SubText>All in one portal for Projects and Assignments !</SubText>
-                      <Link to="/sign-in">
+                      <Link to="/student/sign-in">
                         <CTA>
                             Get started &nbsp;
                             <img src={Arrow} alt="cta" width="100" height="100" />
