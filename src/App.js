@@ -30,13 +30,17 @@ function App() {
               <Route exact path='/all-projects'>
                 <AllProjects url="http://localhost:8080/api/studentProject" />
               </Route>
-              <Route exact path='/student/completed-projects' component={CompletedGuidedProjects} />
-              <Route exact path='/teacher/guided-projects' component={CompletedGuidedProjects} />
+              <Route exact path='/student/completed-projects'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" />
+              </Route>
+              <Route exact path='/teacher/guided-projects'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfileDetails" />
+              </Route>
               <Route exact path='/admin/input-students-data'> 
                 {/* To be Entered by Dhanashree */}
               </Route>
               <Route exact path='/admin/input-teachers-data'> 
-                  {/* To be Entered by Dhanashree */}
+                {/* To be Entered by Dhanashree */}
               </Route>
               <Route exact path='/student/sign-in'> 
                 {!userAuthenticationStatus ? (<LoginForm role="student" url="http://localhost:8080/studentlogin" />) : (<Redirect to="/" />)}

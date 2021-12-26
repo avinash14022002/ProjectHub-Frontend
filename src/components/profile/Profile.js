@@ -1,17 +1,19 @@
 import React from 'react';
 import './Profile.css';
 
-const ProfilePage = () => {
+const ProfilePage = ({userProfile}) => {
     return (
         <div className="MainContainer">
             <div className="ProfilePhoto">
                 <i class="bi bi-person-circle fa-9x"></i>
             </div>
             <div className="ProfileInfo">
-                <p>Name Surname</p>
-                <p>Computer Engineering</p>
-                <p>name.surname19@vit.edu | personal.emailId@gmail.com</p>
-                <p>GrNo. 11911XXX</p>
+                <p>{userProfile.firstName + ' ' + userProfile.lastName}</p>
+                <p>{userProfile.department}</p>
+                {userProfile.role === 'student' 
+                ? <p>{userProfile.collegeEmail + '|' + userProfile.personalEmail}</p>
+                : <p>{userProfile.collegeEmail}</p>}
+                <p>GrNo : {userProfile.userId}</p>
             </div>
         </div>
     )
