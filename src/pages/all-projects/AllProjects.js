@@ -9,16 +9,19 @@ const AllProjects = ({ url }) => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        axios.get(url)
-            .then((response) => {
-                return response.data;
-            })
-            .then((data) => {
-                const filteredProjectsData = filterProjects(data);
-                setProjects(filteredProjectsData);
-            });
+        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+
+        axios.get(url, {
+            headers: { 
+                "Authorization" : `${jwtToken}`
+            } 
+        }).then((response) => {
+            return response.data;
+        }).then((data) => {
+            const filteredProjectsData = filterProjects(data);
+            setProjects(filteredProjectsData);
+        });
     }, []);
-    
     
     const filterProjects = (projects) => {
         const filteredProjects = projects.filter(project => project.closed === '1')

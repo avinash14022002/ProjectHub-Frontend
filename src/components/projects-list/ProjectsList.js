@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import {
+    Link,
+} from "react-router-dom";
 import Project from '../project-card/Project';
 
 const ProjectsList = ({ projects }) => {  
     const [listOfProjects, setListOfProjects] = useState([]);
 
     useEffect(() => {
-        console.log(projects)
         setListOfProjects(projects);
     });
    
     const listItems = listOfProjects.map((project) =>
-        <li key={project.projectId.toString()}>
-            <Project projectData = {project} />
-        </li>
+        <Link to={`/project-details/${project.projectId}`}>
+            <li key={project.projectId.toString()}>
+                <Project projectData = {project} />
+            </li>
+        </Link>
     );
     
     return (

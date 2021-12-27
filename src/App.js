@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext }  from 'react';
+import React, { useContext }  from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import GenericNavbar from './components/navbar/GenericNavbar';
 import Footer from './components/footer/Footer';
@@ -38,14 +38,14 @@ function App() {
                 <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" />
               </Route>
               <Route exact path='/teacher/guided-projects'>
-                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfileDetails" />
+                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" />
               </Route>
               <Route exact path='/admin/existing-students' component={ExistingStudents} />
               <Route exact path='/admin/existing-teachers' component={ExistingTeachers} />
               <Route exact path='/admin/upload-students' component={UploadStudents} />
               <Route exact path='/admin/upload-teachers' component={UploadTeachers} />
               <Route exact path='/student/sign-in'> 
-                {!userAuthenticationStatus ? (<LoginForm role="student" url="http://localhost:8080/studentlogin" />) : (<Redirect to="/" />)}
+                {!userAuthenticationStatus ? (<LoginForm role="student" url="http://localhost:8080/studentLogin" />) : (<Redirect to="/" />)}
               </Route>
               <Route exact path='/teacher/sign-in'> 
                 {!userAuthenticationStatus ? (<LoginForm role="teacher" url="http://localhost:8080/teacherlogin" />) : (<Redirect to="/" />)}
