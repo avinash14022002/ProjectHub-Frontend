@@ -5,30 +5,30 @@ import ProjectsList from '../../components/projects-list/ProjectsList'
 
 const CompletedGuidedProjects = ({ url }) => { 
     const [userProfile, setUserProfile] = useState({});
-    const [userProjects, setUserProjects] = useState({});
+    const [userProjects, setUserProjects] = useState([]);
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('login'));
-        const requestUrl = `${url}?username=${user.userData.userNo}`;
+        const requestUrl = `${url}/${user.userData.userNo}`;
 
-        axios.get(requestUrl)
-            .then((response) => {
-                return response.data;
-            })
-            .then((data) => {
-                console.log(data);
-                if(user.role === 'student') {
-                    setUserProfile({...userProfile, role : user.role, userId: data.username, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId, personalEmail : data.personalEmail, department : data.department});
-                } else {
-                    setUserProfile({...userProfile, role : user.role, userId: data.employeeId, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId,  department : data.department});
-                }
+        axios.get(requestUrl, {
+            headers: { 
+                "Authorization" : `${user.token}`
+            } 
+        }).then((response) => {
+            return response.data;
+        }).then((data) => {
+            console.log(data);
+            if(user.role === 'student') {
+                setUserProfile({...userProfile, role : user.role, userId: data.username, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId, personalEmail : data.personalEmail, department : data.department});
+            } else {
+                setUserProfile({...userProfile, role : user.role, userId: data.employeeId, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId, department : data.department});
+            }
 
-                const completedStudentProjects = filterProjects(data.projects);
-                setUserProjects(completedStudentProjects);
-
-                console.log(userProjects)
-            }, []);
-    });
+            const completedStudentProjects = filterProjects(data.projects);
+            setUserProjects(completedStudentProjects);
+        });
+    }, []);
 
     const filterProjects = (projects) => {
         const filteredProjects = projects.filter(project => project !== null)
