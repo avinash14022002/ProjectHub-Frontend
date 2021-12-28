@@ -13,11 +13,13 @@
     align-self: stretch;
     
 }
+
 .SearchBar{
     margin-top: 5px;
     display: flex;
     justify-content: center;
 }
+
 .Cards{
     color: black;
     margin-top: 48px;

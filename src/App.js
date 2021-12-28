@@ -30,15 +30,17 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route exact path='/contact' component={Contact} />
-              <Route exact path='/project-details/:projectId' component={ProjectDetails} />
               <Route exact path='/all-projects'>
                 <AllProjects url="http://localhost:8080/api/studentProject" />
               </Route>
-              <Route exact path='/student/completed-projects'>
-                <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" />
+              <Route exact path='/project-details/:projectId'>
+                <ProjectDetails url="http://localhost:8080/api/projectDetails" />
               </Route>
-              <Route exact path='/teacher/guided-projects'>
-                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" />
+              <Route exact path='/student/completed-projects/:userId'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" role="student" />
+              </Route>
+              <Route exact path='/teacher/guided-projects/:userId'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
               </Route>
               <Route exact path='/admin/existing-students' component={ExistingStudents} />
               <Route exact path='/admin/existing-teachers' component={ExistingTeachers} />

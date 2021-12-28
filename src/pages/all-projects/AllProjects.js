@@ -21,7 +21,7 @@ const AllProjects = ({ url }) => {
             const filteredProjectsData = filterProjects(data);
             setProjects(filteredProjectsData);
         });
-    }, []);
+    }, [url]);
     
     const filterProjects = (projects) => {
         const filteredProjects = projects.filter(project => project.closed === '1')
@@ -37,7 +37,7 @@ const AllProjects = ({ url }) => {
                 <div className="Filter">
                     <Filter />
                 </div>
-                <div className="Cards" style={{ color: "black" }}>
+                <div className="Cards">
                     <ProjectsList projects={projects} />
                 </div>
             </div>

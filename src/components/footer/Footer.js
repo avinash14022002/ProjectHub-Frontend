@@ -28,9 +28,9 @@ const Footer = () => {
             <div className="col">
               <h4>SOCIAL MEDIA</h4>
                 <ul className="list-unstyled">
-                  <li><i class="bi bi-linkedin"></i> LinkedIn</li>
-                  <li><i class="bi bi-instagram"></i> Instagram</li>
-                  <li><i class="bi bi-facebook"></i> Facebook</li>
+                  <li><i className="bi bi-linkedin"></i> LinkedIn</li>
+                  <li><i className="bi bi-instagram"></i> Instagram</li>
+                  <li><i className="bi bi-facebook"></i> Facebook</li>
                 </ul>
             </div>
           </div>
