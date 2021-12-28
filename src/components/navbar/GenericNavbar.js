@@ -3,31 +3,41 @@ import { LoginContext } from '../../contexts/LoginContext';
 import Navbar from './Navbar';
 
 const GenericNavbar = () => {  
+    const [user, setUser] = useState(null);
+    
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('login'));
+        if(userData !== null) {
+            setUser(userData);
+        }
+    }, [])
+    
     return(
         <LoginContext.Consumer>{(loginContext) => {
             const { userAuthenticationStatus, setUserAuthenticationStatus, userSignInInfo, setUserSignInInfo } = loginContext;
-        
-            if(userAuthenticationStatus && userSignInInfo !== null && userSignInInfo.role === 'student') {
+            // if(userAuthenticationStatus && userSignInInfo !== null && userSignInInfo.role === 'student') {
+            
+            if(user !== null && user.role === 'student') {
                 return (
                     <Navbar 
                         role='student' 
                         tab1='All Projects' route1='/all-projects'
-                        tab2='Completed Projects' route2='/student/completed-projects'
+                        tab2='Completed Projects' route2={`/student/completed-projects/${user.userData.userNo}`}
                         tab3='Ongoing Projects' route3='/student/ongoing-projects'
                         buttonName='Sign Out' 
                     />
                 );
-            } else if(userAuthenticationStatus && userSignInInfo !== null && userSignInInfo.role === 'teacher') {
+            } else if(user !== null && user.role === 'teacher') {
                 return (
                     <Navbar 
                         role='teacher' 
                         tab1='All Projects' route1='/all-projects'
-                        tab2='Guided Projects' route2='/teacher/guided-projects'
+                        tab2='Guided Projects' route2={`/teacher/guided-projects/${user.userData.userNo}`}
                         tab3='Ongoing Projects' route3='/teacher/ongoing-projects'
                         buttonName='Sign Out' 
                     />
                 );
-            } else if(userAuthenticationStatus && userSignInInfo !== null && userSignInInfo.role === 'admin') {
+            } else if(user !== null && user.role === 'admin') {
                 return (
                     <Navbar 
                         role='admin' 

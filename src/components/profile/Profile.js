@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Profile.css';
 
 const ProfilePage = ({ userProfile }) => {
     return (
         <div className="MainContainer">
             <div className="ProfilePhoto">
-                <i class="bi bi-person-circle fa-9x"></i>
+                <i className="bi bi-person-circle fa-9x"></i>
             </div>
             <div className="ProfileInfo">
                 <p>{userProfile.firstName + ' ' + userProfile.lastName}</p>

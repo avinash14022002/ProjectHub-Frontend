@@ -59,29 +59,29 @@ class Filter extends React.Component{
         
             <MDBContainer className="mt-5 TeckStack">
                 <h5>Tech-Stack</h5>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked"/>
-                    <label class="custom-control-label" for="defaultUnchecked">HTML/CSS/JS</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultUnchecked"/>
+                    <label className="custom-control-label" htmlFor="defaultUnchecked">HTML/CSS/JS</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultChecked"/>
-                    <label class="custom-control-label" for="defaultChecked">ReactJS/Angular/Vue/Next.js</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultChecked"/>
+                    <label className="custom-control-label" htmlFor="defaultChecked">ReactJS/Angular/Vue/Next.js</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultChecked"/>
-                    <label class="custom-control-label" for="defaultChecked">NoSQLDB</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultChecked"/>
+                    <label className="custom-control-label" htmlFor="defaultChecked">NoSQLDB</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultChecked"/>
-                    <label class="custom-control-label" for="defaultChecked">SQL</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultChecked"/>
+                    <label className="custom-control-label" htmlFor="defaultChecked">SQL</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultChecked"/>
-                    <label class="custom-control-label" for="defaultChecked">Kotlin/Java</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultChecked"/>
+                    <label className="custom-control-label" htmlFor="defaultChecked">Kotlin/Java</label>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultChecked"/>
-                    <label class="custom-control-label" for="defaultChecked">Python</label>
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" className="custom-control-input" id="defaultChecked"/>
+                    <label className="custom-control-label" htmlFor="defaultChecked">Python</label>
                 </div>
             </MDBContainer>
 
