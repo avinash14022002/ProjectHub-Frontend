@@ -42,10 +42,18 @@ function App() {
               <Route exact path='/teacher/guided-projects/:userId'>
                 <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
               </Route>
-              <Route exact path='/admin/existing-students' component={ExistingStudents} />
-              <Route exact path='/admin/existing-teachers' component={ExistingTeachers} />
-              <Route exact path='/admin/upload-students' component={UploadStudents} />
-              <Route exact path='/admin/upload-teachers' component={UploadTeachers} />
+              <Route exact path='/admin/upload-students'>
+                <UploadStudents uploadUrl="http://localhost:8080/api/uploadStudent"/>
+              </Route>
+              <Route exact path='/admin/upload-teachers'>
+                <UploadTeachers uploadUrl="http://localhost:8080/api/uploadTeacher"/>
+              </Route>
+              <Route exact path='/admin/existing-students'>
+                <ExistingStudents fetchUrl="http://localhost:8080/api/students" downloadUrl="http://localhost:8080/api/student/download/students.csv" />
+              </Route>
+              <Route exact path='/admin/existing-teachers'>
+                <ExistingTeachers fetchUrl="http://localhost:8080/api/teacher" downloadUrl="http://localhost:8080/api/teacher/download/teachers.csv" />
+              </Route>
               <Route exact path='/student/sign-in'> 
                 {!userAuthenticationStatus ? (<LoginForm role="student" url="http://localhost:8080/studentLogin" />) : (<Redirect to="/" />)}
               </Route>
