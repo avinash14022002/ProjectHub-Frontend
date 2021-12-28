@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ExistingStudents = () => {
+const ExistingStudents = ({ fetchUrl, downloadUrl }) => {
 
     const classes = useStyles();
 
@@ -43,22 +43,34 @@ const ExistingStudents = () => {
     ]
 
     useEffect(()=>{
-        fetch("http://localhost:8080/api/students")
-        .then(resp=>resp.json())
-        .then(resp=>setData(resp))
-    },[])
+        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+
+        axios.get(fetchUrl, {
+            headers: {
+                "Authorization" : jwtToken
+            }
+        }).then((response) => {
+            return response.data;
+        }).then((data) => {
+            setData(data)
+        });
+    }, [fetchUrl])
 
     const download=(e)=>{
         e.preventDefault()
-        axios({
-            url: "http://localhost:8080/api/student/download/students.csv",
-            method: "GET",
-            responseType: "blob",
 
-        }).then((res)=>{
-            console.log(res);
-            fileDownload(res.data, "students.csv")
-        })
+        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+
+        axios.get(downloadUrl, {
+            headers: {
+                "Authorization" : jwtToken
+            },
+            responseType: "blob",
+        }).then((response) => {
+            return response.data;
+        }).then((data) => {
+            fileDownload(data, "students.csv")
+        });
     }
 
     return(

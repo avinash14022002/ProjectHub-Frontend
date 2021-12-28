@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const EXTENSIONS = ['xlsx', 'xls', 'csv']
 
-const UploadStudents = () => {
+const UploadStudents = ({ uploadUrl }) => {
     const [colDefs, setColDefs] = useState()
     const [data, setData] = useState()
     const classes = useStyles();
@@ -66,10 +66,8 @@ const UploadStudents = () => {
             
             //removing header
             fileData.splice(0, 1)
-            console.log(fileData)
             
             setData(convertToJson(headers, fileData))
-            console.log(data);
         }
 
         if (file) {
@@ -88,20 +86,22 @@ const UploadStudents = () => {
 
     const [fileSelected, setFileSelected] = useState('') 
 
-    const handleUpload = () =>{
+    const handleUpload = () => {
         let formData = new FormData()
         formData.append("file", fileSelected)
 
-        axios.post(
-            "http://localhost:8080/api/uploadStudent", 
-            formData
-        ).then((response)=>{
+        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+
+        axios.post(uploadUrl, formData, {
+            headers: {
+                "Authorization" : jwtToken
+            }
+        }).then((response) => {
             console.log(response);
-        });
+        })
     };
 
     return(
-       
         <div>
             <h1 align="center" style={{margin:'20px'}} >Upload Students Data</h1>
             <h4 align="center">Import Data from Excel, CSV</h4>
