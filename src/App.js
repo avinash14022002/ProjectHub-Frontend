@@ -13,6 +13,7 @@ import UploadTeachers from './pages/upload-teachers/UploadTeachers';
 import ExistingStudents from './pages/existing-students/ExistingStudents';
 import ExistingTeachers from './pages/existing-teachers/ExistingTeachers';
 import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
+import ResourceNotFound from './pages/404-error/ResourceNotFound';
 import { LoginContext, LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
@@ -63,6 +64,7 @@ function App() {
               <Route exact path='/admin/sign-in'> 
                 {!userAuthenticationStatus ? (<LoginForm role="admin" url="http://localhost:8080/adminlogin"  />) : (<Redirect to="/" />)}
               </Route>
+              <Route component={ResourceNotFound}/>
             </Switch>
           </div>
           <Footer />

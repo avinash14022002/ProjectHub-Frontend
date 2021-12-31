@@ -1,0 +1,9 @@
+.contactImg{
+    display: flex;
+    float: left;
+}
+.contactCard{
+    display: flex;
+    height: auto;
+    padding: 50px;
+}
