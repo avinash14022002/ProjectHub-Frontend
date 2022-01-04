@@ -15,6 +15,7 @@ import ExistingTeachers from './pages/existing-teachers/ExistingTeachers';
 import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
 import ResourceNotFound from './pages/404-error/ResourceNotFound';
 import TeacherOngoingProjects from './pages/teacher-ongoing-projects/TeacherOngoingProjects';
+import TeacherCreateProject from './pages/teacher-create-project/TeacherCreateProject';
 import { LoginContext, LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
@@ -46,6 +47,9 @@ function App() {
               </Route>
               <Route exact path='/teacher/ongoing-projects/:userId'>
                 <TeacherOngoingProjects url="http://localhost:8080/api/teacherOngoing" />
+              </Route>
+              <Route exact path='/teacher/create-project'>
+                <TeacherCreateProject url="http://localhost:8080/api/addNewProject" />
               </Route>
               <Route exact path='/admin/upload-students'>
                 <UploadStudents uploadUrl="http://localhost:8080/api/uploadStudent"/>
