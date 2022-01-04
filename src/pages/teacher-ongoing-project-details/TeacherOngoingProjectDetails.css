@@ -1,0 +1,117 @@
+.card{
+    height: auto;
+    width: 90%;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;  
+}
+
+.MainContainer{
+    padding: 1% 5%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.SemesterTitle{
+    width: 70%;
+}
+
+.ProjectDueDate{
+    width: 50%;
+}
+.InfoContainer{
+    height: auto;
+    width: auto;
+    padding: 1% 5%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.GrNo{
+    align-items: center;
+}
+.Name{
+    align-content: center;
+    font-size: 20px;
+    margin-left: 100px;
+}
+.TextInput{
+    padding: 1% 5%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.Description{
+    width: 50%;
+}
+.TextFieldTitleWrapper{
+    height: auto;
+    width: auto;
+    padding: 1% 5%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    /* display: flex; */
+    align-items: center;
+    /* margin: 0 auto; */
+    justify-content: center;
+    flex-direction: column;
+}
+.UpdateDeadlineButton{
+    color: white;
+    background-color: rgb(1, 139, 231);
+    font-size: 18px;
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: 0 auto;
+    display: block;
+    width: 260px;
+}
+.CloseButton{
+    color: white;
+    background-color: rgb(214, 24, 24);
+    font-size: 18px;
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: 0 auto;
+    display: block;
+    width: 260px;
+    float: right;
+}
+.DownloadButtons{
+    display: flex;
+    justify-content: center;
+}
+.DownloadIndividualButton{
+    color: white;
+    background-color: rgb(1, 139, 231);
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    margin: 50px;
+    width: 120px;
+}
+.ProjectTechnologyTag{
+    background-color: rgb(131, 129, 129);
+    border-radius: 20px;
+    border: 0;
+    padding: 5px 20px;
+    min-width: 80px;
+    text-align: center;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
