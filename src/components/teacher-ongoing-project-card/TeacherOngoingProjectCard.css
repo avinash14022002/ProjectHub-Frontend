@@ -1,0 +1,10 @@
+.Card{
+    width: 100%;
+    height: auto;
+}
+.CardTitle {
+	float: left;
+}
+.CardYear {
+	float: right;
+}

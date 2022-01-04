@@ -33,7 +33,7 @@ const GenericNavbar = () => {
                         role='teacher' 
                         tab1='All Projects' route1='/all-projects'
                         tab2='Guided Projects' route2={`/teacher/guided-projects/${user.userData.userNo}`}
-                        tab3='Ongoing Projects' route3='/teacher/ongoing-projects'
+                        tab3='Ongoing Projects' route3={`/teacher/ongoing-projects/${user.userData.userNo}`}
                         buttonName='Sign Out' 
                     />
                 );
