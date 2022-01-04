@@ -14,6 +14,9 @@ import ExistingStudents from './pages/existing-students/ExistingStudents';
 import ExistingTeachers from './pages/existing-teachers/ExistingTeachers';
 import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
 import ResourceNotFound from './pages/404-error/ResourceNotFound';
+import TeacherOngoingProjects from './pages/teacher-ongoing-projects/TeacherOngoingProjects';
+import TeacherCreateProject from './pages/teacher-create-project/TeacherCreateProject';
+import TeacherOngoingProjectDetails from './pages/teacher-ongoing-project-details/TeacherOngoingProjectDetails';
 import { LoginContext, LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
@@ -42,6 +45,19 @@ function App() {
               </Route>
               <Route exact path='/teacher/guided-projects/:userId'>
                 <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
+              </Route>
+              <Route exact path='/teacher/ongoing-projects/:userId'>
+                <TeacherOngoingProjects url="http://localhost:8080/api/teacherOngoing" />
+              </Route>
+              <Route exact path='/teacher/create-project'>
+                <TeacherCreateProject url="http://localhost:8080/api/addNewProject" />
+              </Route>
+              <Route exact path='/teacher/ongoing-projects/project-details/:projectId'>
+                <TeacherOngoingProjectDetails 
+                  projectDetailsUrl="http://localhost:8080/api/teacherProjectDetails" 
+                  updateDeadlineUrl="http://localhost:8080/api/updateDeadline"
+                  closeProjectUrl="http://localhost:8080/api/closeProject">
+                </TeacherOngoingProjectDetails>
               </Route>
               <Route exact path='/admin/upload-students'>
                 <UploadStudents uploadUrl="http://localhost:8080/api/uploadStudent"/>

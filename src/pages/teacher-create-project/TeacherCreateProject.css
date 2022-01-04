@@ -1,0 +1,118 @@
+.option{
+    color:black;
+}
+.PageTitle{
+    text-align: left;
+}
+.AddInfoLine1{
+    margin-bottom: 50px;
+}
+.AddInfoLine2{
+    margin-bottom: 90px;
+}
+.MainContainerCreateProject{
+    margin: 100px;
+}
+.student1{
+    width: 650px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 50px;
+}
+.student1Title{
+    float:left;
+    margin-top: 10px;
+}
+.student1GrNo{
+    float: right;
+    height: 50px;
+    width: 250px;
+    border-radius: 9px;
+}
+.student2{
+    width: 550px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 90px;
+}
+.student2Title{
+    float:left;
+    margin-top: 10px;
+}
+.student2GrNo{
+    float: right;
+    height: 50px;
+    width: 250px;
+    border-radius: 9px;
+}
+.student3{
+    width: 550px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    /* margin-bottom: 160px; */
+}
+.student3Title{
+    float:left;
+    margin-top: 10px;
+}
+.student3GrNo{
+    float: right;
+    height: 50px;
+    width: 250px;
+    border-radius: 9px;
+}
+/* .student4{
+    width: 550px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+}
+.student4Title{
+    float:left;
+    margin-top: 10px;
+}
+.student4GrNo{
+    float: right;
+    height: 50px;
+    width: 250px;
+    border-radius: 9px;
+} */
+
+.studentMapForm{
+    width: 550px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom:20px;
+    margin-top:20px;
+}
+.studentMapFormTitle{
+    float:left;
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+.studentMapFormGrNo{
+    float: right;
+    height: 50px;
+    width: 250px;
+    border-radius: 9px;
+    margin-bottom:20px;
+}
+.saveButton{
+    color: white;
+    background-color: rgb(1, 139, 231);
+    font-size: 18px;
+    border-radius: 2px;
+    border: 0;
+    padding: 10px 20px;
+    /* margin-top: 950px;
+    margin-bottom: 50px; */
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+    
+}
