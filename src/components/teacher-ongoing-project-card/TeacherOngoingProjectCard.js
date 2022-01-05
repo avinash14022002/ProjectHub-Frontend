@@ -19,7 +19,10 @@ const TeacherOngoingProjectCard = ({ projectData }) => {
             <div className="CardTitle">
                 {ongoingProject.projectInfo && <h4 style={{ color: "black", fontWeight:"bold"}}>{ongoingProject.projectInfo.groupInfo.replaceAll('-', ' ')}</h4>}
                 <div className="CardProjectName">
-                    <p className="mb-2 text-muted">{ongoingProject.projectTitle}</p>
+                  {ongoingProject.projectTitle !== null 
+                    ? <p className="mb-2 text-muted">{ongoingProject.projectTitle}</p>
+                    : <p className="mb-2 text-muted">[ Title not defined yet ]</p>
+                  }
                 </div> 
             </div>
             <div className="CardYear">

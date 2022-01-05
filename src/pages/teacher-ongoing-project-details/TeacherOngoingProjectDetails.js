@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import DatePicker from "react-multi-date-picker"
@@ -9,6 +10,8 @@ import "react-multi-date-picker/styles/backgrounds/bg-gray.css"
 import './TeacherOngoingProjectDetails.css';
  
 const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, closeProjectUrl}) => {
+    const history = useHistory();
+    
     const { projectId } = useParams();
     
     const [project, setProject] = useState({})
@@ -41,14 +44,14 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateDeadline = (e) => { 
         e.preventDefault();
         
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const user = JSON.parse(localStorage.getItem('login'));
 
         axios.put(updateDeadlineUrl, {
                 projectID: projectId,
                 deadline: deadline.toString()
             }, {
             headers : {
-                "Authorization" : jwtToken
+                "Authorization" : user.token
             }
         });
     }
@@ -56,15 +59,17 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateStatus = (e)=>{
         e.preventDefault();
         
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const user = JSON.parse(localStorage.getItem('login'));
 
         const closeProject = `${closeProjectUrl}/${projectId}`;
 
         axios.put(closeProject, { }, {
             headers : {
-                "Authorization" : jwtToken
+                "Authorization" : user.token
             }
         });
+
+        history.replace(`/teacher/ongoing-projects/${user.userData.userNo}`);
     }
     
     return (
