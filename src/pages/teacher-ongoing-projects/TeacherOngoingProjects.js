@@ -18,6 +18,7 @@ const TeacherOngoingProjects = ({ url }) => {
                     "Authorization" : `${user.token}`
                 }
             }).then((response) => {
+                console.log(response.data);
                 return response.data;
             })
             .then((data) => {

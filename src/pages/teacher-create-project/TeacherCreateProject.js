@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 import DatePicker from "react-multi-date-picker";
 import Box from '@mui/material/Box';
 import { Form } from 'react-bootstrap';
@@ -7,6 +8,8 @@ import "react-multi-date-picker/styles/backgrounds/bg-gray.css";
 import './TeacherCreateProject.css';
 
 const TeacherCreateProject = ({ url }) => { 
+    const history = useHistory();
+    
     const [formValues, setFormValues] = useState([{ grNo: ""}]);
 
     const [academicYear, setAcademicYear] = useState('');
@@ -229,6 +232,10 @@ const TeacherCreateProject = ({ url }) => {
                         )
                         if(confirmBox === true){
                             postData();
+                            
+                            const user = JSON.parse(localStorage.getItem('login'));
+
+                            history.replace(`/teacher/ongoing-projects/${user.userData.userNo}`);
                         }
                     }}
                 >Save</button>

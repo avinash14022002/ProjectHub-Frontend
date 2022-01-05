@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SearchBar from '../../components/search/SearchBar';
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
 import Filter from '../../components/filter/Filter';
 import ProjectsList from '../../components/projects-list/ProjectsList'
 import './AllProjects.css';
 
 const AllProjects = ({ url }) => { 
-    const [projects, setProjects] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    
+    const [projectsData, setProjectsData] = useState([]);
+    const [filteredProjectsData, setFilteredProjectsData] = useState([]);
 
     useEffect(() => {
         const jwtToken = JSON.parse(localStorage.getItem('login')).token;
@@ -19,7 +23,9 @@ const AllProjects = ({ url }) => {
             return response.data;
         }).then((data) => {
             const filteredProjectsData = filterProjects(data);
-            setProjects(filteredProjectsData);
+            
+            setProjectsData(filteredProjectsData);
+            setFilteredProjectsData(filteredProjectsData);
         });
     }, [url]);
     
@@ -27,18 +33,54 @@ const AllProjects = ({ url }) => {
         const filteredProjects = projects.filter(project => project.closed === '1')
         return filteredProjects;
     };
-    
+
+    const handleSearch = (event) => {
+        const searchWord = event.target.value;
+        setSearchTerm(searchWord);
+
+        const newFilter = projectsData.filter((project) => {
+            return project.projectTitle.toLowerCase().includes(searchWord.trim().toLowerCase());
+        });
+
+        if (searchWord.trim() === "") {
+          setFilteredProjectsData(projectsData);
+        } else {
+          setFilteredProjectsData(newFilter);
+        }
+    };
+
+    const clearInput = () => {
+        setSearchTerm("");
+        setFilteredProjectsData(projectsData);
+    };
+
     return (
         <div>
             <div className="SearchBar">
-                <SearchBar placeholder="Enter a Project Name..." />
+                <div className="search">
+                    <div className="searchInputs">
+                        <input 
+                            type="text" 
+                            placeholder="Search Projects..." 
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
+                        <div className="searchIcon">
+                            {searchTerm.trim() === '' ? (
+                                <SearchIcon />
+                            ) : (
+                                <CloseIcon id="clearBtn" onClick={clearInput} />
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="MainContainer">
                 <div className="Filter">
                     <Filter />
                 </div>
                 <div className="Cards">
-                    <ProjectsList projects={projects} />
+                    <ProjectsList projects={filteredProjectsData} />
                 </div>
             </div>
         </div>
