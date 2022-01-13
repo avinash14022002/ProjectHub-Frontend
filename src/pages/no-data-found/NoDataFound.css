@@ -1,0 +1,15 @@
+.noDataImage {
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;  
+}
+
+.messageToDisplay{
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;
+    margin-bottom: 120px; 
+}
