@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TeacherOngoingProjectCard from '../teacher-ongoing-project-card/TeacherOngoingProjectCard';
 import Box from '@mui/material/Box';
 
 const TeacherOngoingProjectsList = ({ ongoingProjects }) => {  
-    const [listOfOngoingProjects, setListOfOngoingProjects] = useState([]);
-
-    useEffect(() => {
-        setListOfOngoingProjects(ongoingProjects);
-    }, [ongoingProjects]);
-   
-    const listItems = listOfOngoingProjects.map((project) =>
+    const listOfOngoingProjects = ongoingProjects.map((project) =>
         <li key={project.projectId.toString()}>
-            <TeacherOngoingProjectCard projectData={project} />
+            <TeacherOngoingProjectCard ongoingProject={project} />
         </li>
     );
     
@@ -30,7 +24,7 @@ const TeacherOngoingProjectsList = ({ ongoingProjects }) => {
                     paddingLeft: '200px'
                 }}
             >
-                {listItems}
+                {listOfOngoingProjects}
             </Box>
     </div>
     );

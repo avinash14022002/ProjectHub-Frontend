@@ -36,16 +36,21 @@ export const LoginProvider = (props) => {
           }
         }).then(function (data) {
             sessionStorage.setItem('login', JSON.stringify({
-              token : "Bearer " + data.jwt,
+              token : "Bearer " + data.token,
               role : role,
               userNo : data.username,
             }));
     
-            if(sessionStorage.getItem('login') !== null) {
+            const user = sessionStorage.getItem('login');
+            if(user !== null) {
               setUserAuthStatus(true);
-              setUserInfo(JSON.parse(sessionStorage.getItem('login')));
+              setUserInfo(JSON.parse(user));
               
-              history.replace('/all-projects')
+              if(user.role === 'admin') {
+                history.push('/admin/existing-students');
+              } else {
+                history.push('/all-projects');
+              }
             }
         }).catch(function (error) {
             if(error.response && error.response.status === 403) {

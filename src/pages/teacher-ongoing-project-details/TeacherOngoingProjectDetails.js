@@ -159,9 +159,9 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
 
                                 <h5 style={{ color: "black", margin: "20px",float:"left"}}>Tech-Stack </h5>
                                 <div>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag1}</button>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black", display:"inline-block"}}>{project.projectTag2}</button>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black", display:"inline-block"}}>{project.projectTag3}</button>
+                                    {project.projectTag1 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag1}</button>}
+                                    {project.projectTag2 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag2}</button>}
+                                    {project.projectTag3 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag3}</button>}
                                 </div>
                             </Box>
                         </div>
@@ -195,11 +195,13 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
                         const confirmBox = window.confirm(
                             "Do you want to close project ?"
                         )
+                        
                         if(confirmBox === true){
                             updateStatus(e)
                         }
                     }}
-                >CLOSE PROJECT </button>
+                >CLOSE PROJECT </button>                    
+
                 
         </MDBCardBody>
     </MDBCard>

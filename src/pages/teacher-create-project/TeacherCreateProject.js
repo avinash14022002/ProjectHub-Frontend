@@ -24,8 +24,6 @@ const TeacherCreateProject = ({ url }) => {
     const [student1ID, setStudent1ID] = useState('');
     const [student2ID, setStudent2ID] = useState('');
     const [student3ID, setStudent3ID] = useState('');
-    // const [student4ID, setStudent4ID] = useState('');
-    // const [student5ID, setStudent5ID] = useState('');
     
     const projectInfo = academicYear + '#' + semester + '#' + year + '-' + branch + '-' + division + '-' + groupNo ;
 
@@ -230,12 +228,13 @@ const TeacherCreateProject = ({ url }) => {
                         const confirmBox = window.confirm(
                             "Do you want to submit data ?"
                         )
+
                         if(confirmBox === true){
                             postData();
                             
-                            const user = JSON.parse(localStorage.getItem('login'));
+                            const user = JSON.parse(sessionStorage.getItem('login'));
 
-                            history.replace(`/teacher/ongoing-projects/${user.userData.userNo}`);
+                            history.replace(`/teacher/ongoing-projects/${user.userNo}`);
                         }
                     }}
                 >Save</button>

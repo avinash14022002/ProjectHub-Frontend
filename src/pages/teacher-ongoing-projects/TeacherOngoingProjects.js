@@ -11,14 +11,13 @@ const TeacherOngoingProjects = ({ url }) => {
 
     useEffect(() => {
         const user = JSON.parse(sessionStorage.getItem('login'));
-        const projectUrl = `${url}/${user.userData.userNo}`;
+        const projectUrl = `${url}/${user.userNo}`;
 
         axios.get(projectUrl, {
                 headers: {
                     "Authorization" : `${user.token}`
                 }
             }).then((response) => {
-                console.log(response.data);
                 return response.data;
             })
             .then((data) => {

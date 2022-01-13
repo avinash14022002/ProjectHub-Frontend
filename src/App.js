@@ -32,10 +32,10 @@ function App() {
               <Route exact path='/about' component={About} />
               <Route exact path='/contact' component={Contact} />
               <Route exact path='/all-projects'>
-                <AllProjects url="http://localhost:8080/api/studentProject" />
+                <AllProjects studentUrl="http://localhost:8080/api/studentProject" teacherUrl="http://localhost:8080/api/teacherProject" />
               </Route>
               <Route exact path='/project-details/:projectId'>
-                <ProjectDetails url="http://localhost:8080/api/projectDetails" />
+                <ProjectDetails studentUrl="http://localhost:8080/api/projectDetails" teacherUrl="http://localhost:8080/api/teacherProjectDetails" />
               </Route>
               <Route exact path='/student/completed-projects/:userId'>
                 <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" role="student" />
@@ -72,10 +72,10 @@ function App() {
                 <LoginForm role="student" url="http://localhost:8080/auth/studentLogin" />
               </Route>
               <Route exact path='/teacher/sign-in'> 
-                <LoginForm role="teacher" url="http://localhost:8080/auth/teacherlogin" />
+                <LoginForm role="teacher" url="http://localhost:8080/auth/teacherLogin" />
               </Route>
               <Route exact path='/admin/sign-in'> 
-                <LoginForm role="admin" url="http://localhost:8080/auth/adminlogin" />
+                <LoginForm role="admin" url="http://localhost:8080/auth/adminLogin" />
               </Route>
               <Route component={ResourceNotFound}/>
             </Switch>

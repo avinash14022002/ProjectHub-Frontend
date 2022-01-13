@@ -7,25 +7,34 @@ import {
 } from "react-router-dom";
 import './ProjectDetails.css';
 
-const ProjectDetails = ({ url }) => { 
+const ProjectDetails = ({ studentUrl, teacherUrl }) => { 
   const { projectId } = useParams();
   
   const[projectDetails, setProjectDetails] = useState({});
 
-  useEffect(() => {
-    const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
-
-    const projectUrl = `${url}/${projectId}`
-
-    axios.get(projectUrl, {
+  const fetchProjectDetails = (url, token) => {
+    axios.get(url, {
       headers: { 
-        "Authorization" : `${jwtToken}`
+        "Authorization" : `${token}`
     }}).then(response => {
       return response.data;
     }).then(projectData => {
       setProjectDetails(projectData)
     });
-  }, [url, projectId]);
+  }
+
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem('login'));
+
+    if(user.role === "student") {
+      const projectUrl = `${studentUrl}/${projectId}`;
+      fetchProjectDetails(projectUrl, user.token);
+    } else if(user.role === "teacher") {
+      const projectUrl = `${teacherUrl}/${projectId}`;
+      fetchProjectDetails(projectUrl, user.token);
+    }
+    
+  }, [studentUrl, teacherUrl, projectId]);
 
   return (
     <MDBCard className="card">
@@ -43,9 +52,9 @@ const ProjectDetails = ({ url }) => {
                 
                 <h3 className="ProjectTechnology" style={{ color: "black"}}>Technology : </h3>
                 <div>
-                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag1}</button>
-                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag2}</button>
-                  <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag3}</button>
+                  {projectDetails.projectTag1 && <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag1}</button>}
+                  {projectDetails.projectTag2 && <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag2}</button>}
+                  {projectDetails.projectTag3 && <button className="ProjectTechnologyTag" style={{ color: "black"}}>{projectDetails.projectTag3}</button>}
                 </div>
 
                 <button className="PaperButton" onClick={event => window.open(projectDetails.paperUrl, '_blank')}>Paper <i className="bi bi-download"></i> </button>

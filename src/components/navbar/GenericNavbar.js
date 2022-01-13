@@ -31,9 +31,9 @@ const GenericNavbar = () => {
                 return (
                     <Navbar 
                         role='admin' 
-                        tab1='Students' route1='/admin/input-students-data'
-                        tab2='Teachers' route2='/admin/input-teachers-data'
-                        tab3='All Projects' route3='/all-projects'
+                        tab1='All Projects' route1='/all-projects'
+                        tab2='Students' route2='/admin/existing-students'
+                        tab3='Teachers' route3='/admin/existing-teachers'
                         buttonName='Sign Out' handleSignOut={handleUserSignOut}
                     />
                 );
