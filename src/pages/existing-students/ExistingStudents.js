@@ -24,21 +24,12 @@ const ExistingStudents = ({ fetchUrl, downloadUrl }) => {
     const [data, setData] = useState([])
     const columns = [
         {title: "Username", field: "username"},
-        {title: "Password", field: "password"},
         {title: "FirstName", field: "firstName"},
         {title: "LastName", field: "lastName"},
         {title: "Department", field: "department"},
         {title: "EmailID", field: "emailId"},
         {title: "PersonalEmail", field: "personalEmail"},
         {title: "Roles", field: "roles"},
-        {title: "Project1iD", field: "project1id"},
-        {title: "Project2iD", field: "project2id"},
-        {title: "Project3iD", field: "project3id"},
-        {title: "Project4iD", field: "project4id"},
-        {title: "Project5iD", field: "project5id"},
-        {title: "Project6iD", field: "project6id"},
-        {title: "Project7iD", field: "project7id"},
-        {title: "Project8iD", field: "project8id"},
         {title: "Active", field: "active"}
     ]
 
