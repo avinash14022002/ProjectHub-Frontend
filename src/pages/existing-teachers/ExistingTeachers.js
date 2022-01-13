@@ -33,7 +33,7 @@ const ExistingTeachers = ({ fetchUrl, downloadUrl }) => {
     ]
 
     useEffect(()=>{
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         axios.get(fetchUrl, {
             headers: {
@@ -49,7 +49,7 @@ const ExistingTeachers = ({ fetchUrl, downloadUrl }) => {
     const download=(e)=>{
         e.preventDefault()
 
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         axios.get(downloadUrl, {
             headers: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, Button } from 'react-bootstrap';
 import {
   Nav,
   NavLink,
@@ -32,31 +32,20 @@ const Navbar = (props) => {
           <NavLink to={props.route3}>
             {props.tab3}
           </NavLink>
-          {/* <NavLink to='/about'>
-            About
-          </NavLink>
-          <NavLink to='/contact'>
-            Contact
-          </NavLink> */}
           {props.role === 'unassigned' ?
-          (<Dropdown>
-              <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
-                {props.buttonName}
-              </Dropdown.Toggle>
+            (<Dropdown>
+                <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
+                  {props.buttonName}
+                </Dropdown.Toggle>
 
-              <Dropdown.Menu variant="dark">
-                <DropdownElement to='/student/sign-in'>Student SignIn</DropdownElement>
-                <DropdownElement to='/teacher/sign-in'>Teacher SignIn</DropdownElement>
-                <DropdownElement to='/admin/sign-in'>Admin SignIn</DropdownElement>
-              </Dropdown.Menu>
-            </Dropdown>)
-            : (<Dropdown>
-              <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
-                {props.buttonName}
-              </Dropdown.Toggle>
-            </Dropdown>
-          )
-        }
+                <Dropdown.Menu variant="dark">
+                  <DropdownElement to='/student/sign-in'>Student SignIn</DropdownElement>
+                  <DropdownElement to='/teacher/sign-in'>Teacher SignIn</DropdownElement>
+                  <DropdownElement to='/admin/sign-in'>Admin SignIn</DropdownElement>
+                </Dropdown.Menu>
+              </Dropdown>
+            ) : (<Button variant="primary" onClick={props.handleSignOut}>{props.buttonName}</Button>)
+          }
         </NavMenu>
       </Nav>
     </>

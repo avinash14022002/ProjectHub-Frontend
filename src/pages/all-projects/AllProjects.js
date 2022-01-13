@@ -2,32 +2,39 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
-import Filter from '../../components/filter/Filter';
 import ProjectsList from '../../components/projects-list/ProjectsList'
 import './AllProjects.css';
 
-const AllProjects = ({ url }) => { 
+const AllProjects = ({ studentUrl, teacherUrl }) => { 
     const [searchTerm, setSearchTerm] = useState("");
     
     const [projectsData, setProjectsData] = useState([]);
     const [filteredProjectsData, setFilteredProjectsData] = useState([]);
 
     useEffect(() => {
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
-        axios.get(url, {
-            headers: { 
-                "Authorization" : `${jwtToken}`
-            } 
-        }).then((response) => {
-            return response.data;
-        }).then((data) => {
-            const filteredProjectsData = filterProjects(data);
-            
-            setProjectsData(filteredProjectsData);
-            setFilteredProjectsData(filteredProjectsData);
-        });
-    }, [url]);
+        const fetchProjects = (url, token) => {
+            axios.get(url, {
+                headers: { 
+                    "Authorization" : token
+                } 
+            }).then((response) => {
+                return response.data;
+            }).then((data) => {
+                const filteredProjectsData = filterProjects(data);
+                
+                setProjectsData(filteredProjectsData);
+                setFilteredProjectsData(filteredProjectsData);
+            }); 
+        }
+
+        if(user.role === 'student') {
+            fetchProjects(studentUrl, user.token);
+        } else if(user.role === 'teacher') {
+            fetchProjects(teacherUrl, user.token);
+        }
+    }, [studentUrl, teacherUrl]);
     
     const filterProjects = (projects) => {
         const filteredProjects = projects.filter(project => project.closed === '1')
@@ -76,9 +83,6 @@ const AllProjects = ({ url }) => {
                 </div>
             </div>
             <div className="MainContainer">
-                <div className="Filter">
-                    <Filter />
-                </div>
                 <div className="Cards">
                     <ProjectsList projects={filteredProjectsData} />
                 </div>

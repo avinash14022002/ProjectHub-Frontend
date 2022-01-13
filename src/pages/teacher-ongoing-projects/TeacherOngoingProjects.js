@@ -10,15 +10,14 @@ const TeacherOngoingProjects = ({ url }) => {
     const [ongoingProjects, setOngoingProjects] = useState([]);
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('login'));
-        const projectUrl = `${url}/${user.userData.userNo}`;
+        const user = JSON.parse(sessionStorage.getItem('login'));
+        const projectUrl = `${url}/${user.userNo}`;
 
         axios.get(projectUrl, {
                 headers: {
                     "Authorization" : `${user.token}`
                 }
             }).then((response) => {
-                console.log(response.data);
                 return response.data;
             })
             .then((data) => {

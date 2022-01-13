@@ -22,11 +22,16 @@ const validateInfo = (values, role) => {
 
         break;
       case "teacher":
-      case "admin":
         if (!values.userNo.trim()) {
           errors.userNo = 'Emp No is required';
         } else if (!checkWhetherUserNoHasAllDigits(values.userNo)) {
           errors.userNo = 'Enter a valid Emp No which contains only numbers';
+        }
+
+        break;
+      case "admin": 
+        if (!values.userNo.trim()) {
+          errors.userNo = 'Emp No is required';
         }
 
         break;

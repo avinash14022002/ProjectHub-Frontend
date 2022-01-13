@@ -19,7 +19,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const [deadline, setDeadline] = useState(new Date());
     
     useEffect(() => {
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         const projectUrl = `${projectDetailsUrl}/${projectId}`;
 
@@ -44,7 +44,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateDeadline = (e) => { 
         e.preventDefault();
         
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
         axios.put(updateDeadlineUrl, {
                 projectID: projectId,
@@ -59,7 +59,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateStatus = (e)=>{
         e.preventDefault();
         
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
         const closeProject = `${closeProjectUrl}/${projectId}`;
 
@@ -69,7 +69,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
             }
         });
 
-        history.replace(`/teacher/ongoing-projects/${user.userData.userNo}`);
+        history.replace(`/teacher/ongoing-projects/${user.userNo}`);
     }
     
     return (
@@ -159,9 +159,9 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
 
                                 <h5 style={{ color: "black", margin: "20px",float:"left"}}>Tech-Stack </h5>
                                 <div>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag1}</button>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black", display:"inline-block"}}>{project.projectTag2}</button>
-                                    <button className="ProjectTechnologyTag" style={{ color: "black", display:"inline-block"}}>{project.projectTag3}</button>
+                                    {project.projectTag1 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag1}</button>}
+                                    {project.projectTag2 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag2}</button>}
+                                    {project.projectTag3 && <button className="ProjectTechnologyTag" style={{ color: "black",display:"inline-block"}}>{project.projectTag3}</button>}
                                 </div>
                             </Box>
                         </div>
@@ -195,11 +195,13 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
                         const confirmBox = window.confirm(
                             "Do you want to close project ?"
                         )
+                        
                         if(confirmBox === true){
                             updateStatus(e)
                         }
                     }}
-                >CLOSE PROJECT </button>
+                >CLOSE PROJECT </button>                    
+
                 
         </MDBCardBody>
     </MDBCard>

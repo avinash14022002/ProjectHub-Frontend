@@ -88,7 +88,7 @@ const UploadTeachers = ({ uploadUrl }) => {
         let formData = new FormData();
         formData.append("file", fileSelected);
 
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         axios.post(uploadUrl, formData, {
             headers: {
