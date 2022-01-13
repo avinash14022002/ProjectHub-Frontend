@@ -11,7 +11,7 @@ const CompletedGuidedProjects = ({ url, role }) => {
     const [userProjects, setUserProjects] = useState([]);
 
     useEffect(() => {
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         const userProjectsUrl = `${url}/${userId}`;
 

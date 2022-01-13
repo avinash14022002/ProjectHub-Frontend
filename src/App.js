@@ -1,5 +1,5 @@
-import React, { useContext }  from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GenericNavbar from './components/navbar/GenericNavbar';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home'
@@ -17,19 +17,16 @@ import ResourceNotFound from './pages/404-error/ResourceNotFound';
 import TeacherOngoingProjects from './pages/teacher-ongoing-projects/TeacherOngoingProjects';
 import TeacherCreateProject from './pages/teacher-create-project/TeacherCreateProject';
 import TeacherOngoingProjectDetails from './pages/teacher-ongoing-project-details/TeacherOngoingProjectDetails';
-import { LoginContext, LoginProvider } from './contexts/LoginContext';
+import { LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
 function App() {
-  const { userAuthenticationStatus, setUserAuthenticationStatus, userSignInInfo, setUserSignInInfo } = useContext(LoginContext);
-  
   return (
     <Router>
       <LoginProvider>
         <div className="page-container">
           <div className="content-wrap">
             <GenericNavbar />
-            {[userAuthenticationStatus, userSignInInfo]}
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
@@ -72,13 +69,13 @@ function App() {
                 <ExistingTeachers fetchUrl="http://localhost:8080/api/teacher" downloadUrl="http://localhost:8080/api/teacher/download/teachers.csv" />
               </Route>
               <Route exact path='/student/sign-in'> 
-                {!userAuthenticationStatus ? (<LoginForm role="student" url="http://localhost:8080/studentLogin" />) : (<Redirect to="/" />)}
+                <LoginForm role="student" url="http://localhost:8080/auth/studentLogin" />
               </Route>
               <Route exact path='/teacher/sign-in'> 
-                {!userAuthenticationStatus ? (<LoginForm role="teacher" url="http://localhost:8080/teacherlogin" />) : (<Redirect to="/" />)}
+                <LoginForm role="teacher" url="http://localhost:8080/auth/teacherlogin" />
               </Route>
               <Route exact path='/admin/sign-in'> 
-                {!userAuthenticationStatus ? (<LoginForm role="admin" url="http://localhost:8080/adminlogin"  />) : (<Redirect to="/" />)}
+                <LoginForm role="admin" url="http://localhost:8080/auth/adminlogin" />
               </Route>
               <Route component={ResourceNotFound}/>
             </Switch>

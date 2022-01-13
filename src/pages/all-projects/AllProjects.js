@@ -13,7 +13,7 @@ const AllProjects = ({ url }) => {
     const [filteredProjectsData, setFilteredProjectsData] = useState([]);
 
     useEffect(() => {
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         axios.get(url, {
             headers: { 

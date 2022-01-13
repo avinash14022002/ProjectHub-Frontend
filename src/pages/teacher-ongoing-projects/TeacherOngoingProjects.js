@@ -10,7 +10,7 @@ const TeacherOngoingProjects = ({ url }) => {
     const [ongoingProjects, setOngoingProjects] = useState([]);
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
         const projectUrl = `${url}/${user.userData.userNo}`;
 
         axios.get(projectUrl, {

@@ -54,10 +54,10 @@ const TeacherCreateProject = ({ url }) => {
     });
 
     const postData = () => {
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
         axios.post(url, {
-            guideID: user.userData.userNo,
+            guideID: user.userNo,
             projectInfo,
             student1ID,
             student2ID,

@@ -9,6 +9,7 @@ const Project = ({ projectData }) => {
   const [project, setProject] = useState({});
 
   useEffect(() => {
+    console.log(projectData);
     setProject(projectData);
   }, [projectData]);
 

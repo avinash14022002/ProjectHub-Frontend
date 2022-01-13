@@ -13,7 +13,7 @@ const ProjectDetails = ({ url }) => {
   const[projectDetails, setProjectDetails] = useState({});
 
   useEffect(() => {
-    const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+    const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
     const projectUrl = `${url}/${projectId}`
 

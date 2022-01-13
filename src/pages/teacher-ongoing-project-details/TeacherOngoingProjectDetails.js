@@ -19,7 +19,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const [deadline, setDeadline] = useState(new Date());
     
     useEffect(() => {
-        const jwtToken = JSON.parse(localStorage.getItem('login')).token;
+        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
         const projectUrl = `${projectDetailsUrl}/${projectId}`;
 
@@ -44,7 +44,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateDeadline = (e) => { 
         e.preventDefault();
         
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
         axios.put(updateDeadlineUrl, {
                 projectID: projectId,
@@ -59,7 +59,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateStatus = (e)=>{
         e.preventDefault();
         
-        const user = JSON.parse(localStorage.getItem('login'));
+        const user = JSON.parse(sessionStorage.getItem('login'));
 
         const closeProject = `${closeProjectUrl}/${projectId}`;
 
@@ -69,7 +69,7 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
             }
         });
 
-        history.replace(`/teacher/ongoing-projects/${user.userData.userNo}`);
+        history.replace(`/teacher/ongoing-projects/${user.userNo}`);
     }
     
     return (
