@@ -24,7 +24,6 @@ const ExistingTeachers = ({ fetchUrl, downloadUrl }) => {
     const [data, setData] = useState([])
     const columns = [
         {title: "EmployeeID", field: "employeeID"},
-        {title: "Password", field: "password"},
         {title: "FirstName", field: "firstName"},
         {title: "LastName", field: "lastName"},
         {title: "Department", field: "department"},
