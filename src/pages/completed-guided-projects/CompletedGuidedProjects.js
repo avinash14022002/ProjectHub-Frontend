@@ -18,20 +18,24 @@ const CompletedGuidedProjects = ({ url, role }) => {
         axios.get(userProjectsUrl, {
             headers: { 
                 "Authorization" : `${jwtToken}`,
-            } 
+            }
         }).then((response) => {
             return response.data;
         }).then((data) => {
             if(role === 'student') {
-                setUserProfile({...userProfile, role : role, userId: data.username, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId, personalEmail : data.personalEmail, department : data.department});
+                setUserProfile((prevUserProfileData) => {
+                    return {...prevUserProfileData, role: role, userId: data.username, firstName: data.firstName, lastName: data.lastName, collegeEmail: data.emailId, personalEmail: data.personalEmail, department: data.department}
+                });
             } else {
-                setUserProfile({...userProfile, role : role, userId: data.employeeId, firstName : data.firstName, lastName : data.lastName, collegeEmail : data.emailId, department : data.department});
+                setUserProfile((prevUserProfileData) => {
+                    return {...prevUserProfileData, role: role, userId: data.employeeId, firstName: data.firstName, lastName: data.lastName, collegeEmail: data.emailId, department: data.department};
+                });
             }
 
             const completedStudentProjects = filterProjects(data.projects);
             setUserProjects(completedStudentProjects);
         });
-    }, [url, role, userId, userProfile]);
+    }, [url, role, userId]);
 
     const filterProjects = (projects) => {
         const filteredProjects = projects.filter(project => project !== null)

@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Project from '../project-card/Project';
 
 const ProjectsList = ({ projects }) => {  
-    const [listOfProjects, setListOfProjects] = useState([]);
-
-    useEffect(() => {
-        setListOfProjects(projects);
-    }, [projects]);
-   
-    const listItems = listOfProjects.map((project) =>
+    const listOfProjects = projects.map((project) =>
         <li key={project.projectId.toString()}>
             <Project projectData = {project} />
         </li>
@@ -17,7 +11,7 @@ const ProjectsList = ({ projects }) => {
     return (
         <div>
             <ul className="list-unstyled">
-                {listItems}
+                {listOfProjects}
             </ul>
         </div>
     );

@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card'
 import {
   Link,
 } from "react-router-dom";
 import './TeacherOngoingProjectCard.css';
 
-const TeacherOngoingProjectCard = ({ projectData }) => {
-  const [ongoingProject, setOngoingProject] = useState({});
-
-  useEffect(() => {
-    setOngoingProject(projectData);
-  }, [projectData]);
-
+const TeacherOngoingProjectCard = ({ ongoingProject }) => {
   return (
     <Link to={`/teacher/ongoing-projects/project-details/${ongoingProject.projectId}`} style={{ textDecoration: 'none' }}>
       <Card className="Card" style={{ width: '25rem' }}>
