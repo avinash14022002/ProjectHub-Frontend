@@ -8,15 +8,16 @@ import Contact from './pages/contact/Contact'
 import LoginForm from './pages/login/LoginForm'
 import AllProjects from './pages/all-projects/AllProjects';
 import ProjectDetails from './pages/project-detailed-page/ProjectDetails';
+import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
+import StudentOngoingProject from './pages/student-ongoing-project/StudentOngoingProject';
+import TeacherOngoingProjects from './pages/teacher-ongoing-projects/TeacherOngoingProjects';
+import TeacherCreateProject from './pages/teacher-create-project/TeacherCreateProject';
+import TeacherOngoingProjectDetails from './pages/teacher-ongoing-project-details/TeacherOngoingProjectDetails';
 import UploadStudents from './pages/upload-students/UploadStudents';
 import UploadTeachers from './pages/upload-teachers/UploadTeachers';
 import ExistingStudents from './pages/existing-students/ExistingStudents';
 import ExistingTeachers from './pages/existing-teachers/ExistingTeachers';
-import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
 import ResourceNotFound from './pages/404-error/ResourceNotFound';
-import TeacherOngoingProjects from './pages/teacher-ongoing-projects/TeacherOngoingProjects';
-import TeacherCreateProject from './pages/teacher-create-project/TeacherCreateProject';
-import TeacherOngoingProjectDetails from './pages/teacher-ongoing-project-details/TeacherOngoingProjectDetails';
 import { LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
@@ -39,6 +40,13 @@ function App() {
               </Route>
               <Route exact path='/student/completed-projects/:userId'>
                 <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" role="student" />
+              </Route>
+              <Route exact path='/student/ongoing-project'>
+                <StudentOngoingProject 
+                    projectIdUrl="http://localhost:8080/api/studentOngoing" 
+                    projectDetailsUrl="http://localhost:8080/api/projectDetails" 
+                    updateProjectDetailsUrl="http://localhost:8080/api/studentProject" 
+                />
               </Route>
               <Route exact path='/teacher/guided-projects/:userId'>
                 <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
