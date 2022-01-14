@@ -47,11 +47,7 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
         setSearchTerm(searchWord);
 
         const newFilter = projectsData.filter((project) => {
-            try {
-                return project.projectTitle.toLowerCase().includes(searchWord.trim().toLowerCase());
-            } catch(error) {
-                console.log(error);
-            }
+            return project.projectTitle.includes(searchWord);
         });
 
         if (searchWord.trim() === "") {
