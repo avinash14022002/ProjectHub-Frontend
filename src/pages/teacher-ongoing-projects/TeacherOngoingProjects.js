@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add'
 import Fab from '@material-ui/core/Fab'
 import TeacherOngoingProjectsList from '../../components/teacher-ongoing-project-list/TeacherOngoingProjectsList';
+import NoDataFound from '../../pages/no-data-found/NoDataFound'
 import './TeacherOngoingProjects.css';
 
 const TeacherOngoingProjects = ({ url }) => { 
@@ -34,12 +35,14 @@ const TeacherOngoingProjects = ({ url }) => {
                     </Fab>
                 </Link>
             </div>
-            
             <br/>
             <h1 className="PageTitle" style={{textAlign:'center'}}><b>On-going Projects</b></h1>
-            <div className="Cards">
-                <TeacherOngoingProjectsList ongoingProjects={ongoingProjects} />
-            </div>
+            {ongoingProjects.length === 0 
+                ? <NoDataFound displayMessage="You have currently no ongoing projects." /> 
+                :   <div className="Cards">
+                        <TeacherOngoingProjectsList ongoingProjects={ongoingProjects} />
+                    </div>
+            }
         </div>
     );
 };

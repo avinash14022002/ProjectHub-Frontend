@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import ProjectsList from '../../components/projects-list/ProjectsList'
+import NoDataFound from '../../pages/no-data-found/NoDataFound'
 import './AllProjects.css';
 
 const AllProjects = ({ studentUrl, teacherUrl }) => { 
@@ -22,16 +23,16 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
             }).then((response) => {
                 return response.data;
             }).then((data) => {
-                const filteredProjectsData = filterProjects(data);
+                const filteredProjects = filterProjects(data);
                 
-                setProjectsData(filteredProjectsData);
-                setFilteredProjectsData(filteredProjectsData);
+                setProjectsData(filteredProjects);
+                setFilteredProjectsData(filteredProjects);
             }); 
         }
 
         if(user.role === 'student') {
             fetchProjects(studentUrl, user.token);
-        } else if(user.role === 'teacher') {
+        } else if(user.role === 'teacher' || user.role === 'admin') {
             fetchProjects(teacherUrl, user.token);
         }
     }, [studentUrl, teacherUrl]);
@@ -61,34 +62,40 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
         setFilteredProjectsData(projectsData);
     };
 
-    return (
-        <div>
-            <div className="SearchBar">
-                <div className="search">
-                    <div className="searchInputs">
-                        <input 
-                            type="text" 
-                            placeholder="Search Projects..." 
-                            value={searchTerm}
-                            onChange={handleSearch}
-                        />
-                        <div className="searchIcon">
-                            {searchTerm.trim() === '' ? (
-                                <SearchIcon />
-                            ) : (
-                                <CloseIcon id="clearBtn" onClick={clearInput} />
-                            )}
+    if(projectsData.length === 0) {
+        return <NoDataFound displayMessage="No projects available." />
+    } else if(projectsData.length !== 0 && filteredProjectsData.length === 0) {
+        return <NoDataFound displayMessage={`No projects available with this name ${searchTerm}.`} />
+    } else {
+        return (
+            <div>
+                <div className="SearchBar">
+                    <div className="search">
+                        <div className="searchInputs">
+                            <input 
+                                type="text" 
+                                placeholder="Search Projects..." 
+                                value={searchTerm}
+                                onChange={handleSearch}
+                            />
+                            <div className="searchIcon">
+                                {searchTerm.trim() === '' ? (
+                                    <SearchIcon />
+                                ) : (
+                                    <CloseIcon id="clearBtn" onClick={clearInput} />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="MainContainer">
-                <div className="Cards">
-                    <ProjectsList projects={filteredProjectsData} />
+                <div className="MainContainer">
+                    <div className="Cards">
+                        <ProjectsList projects={filteredProjectsData} />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default AllProjects;

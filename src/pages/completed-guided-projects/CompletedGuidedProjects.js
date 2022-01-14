@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import ProfilePage from '../../components/profile/Profile';
 import ProjectsList from '../../components/projects-list/ProjectsList'
+import NoDataFound from '../../pages/no-data-found/NoDataFound'
 
 const CompletedGuidedProjects = ({ url, role }) => { 
     const { userId } = useParams()
@@ -47,9 +48,12 @@ const CompletedGuidedProjects = ({ url, role }) => {
             <ProfilePage userProfile={userProfile}/>
             <center><h2><b>Completed Projects</b></h2></center>
             <br/>
-            <div className="Cards">
-                <ProjectsList projects={userProjects} />
-            </div>
+            {userProjects.length === 0 
+                ? <NoDataFound displayMessage="You have no accomplished projects." /> 
+                :   <div className="Cards">
+                        <ProjectsList projects={userProjects} />
+                    </div>
+            }
         </div>
     );
 };
