@@ -1,43 +1,48 @@
 import React from 'react';
 import './About.css';
 
-const Founder = (props) => {
-    
+const Founder = ({founderNo, firstName, lastName, linkedInUrl, githubUrl, displayPicture}) => {
     const onLinkedInClick = (e) => {
         e.preventDefault();
-        if(props.linkedInURL !== '') {
-            window.open(props.linkedInURL);
+        
+        if(linkedInUrl !== '') {
+            window.open(linkedInUrl);
         } else {
-            window.alert(`Link to LinkedIn profile doesn't exist for the founder ${props.firstName + " " + props.lastName}`);
+            window.alert(`Link to LinkedIn profile doesn't exist for the founder ${firstName + " " + lastName}`);
         }
     }
-    
+
+    const onGithubClick = (e) => {
+        e.preventDefault();
+        
+        if(githubUrl !== '') {
+            window.open(githubUrl);
+        } else {
+            window.alert(`Link to Github profile doesn't exist for the founder ${firstName + " " + lastName}`);
+        }
+    }
+
     return (
-        <div>
-            <section className="common-section about-us">
-                <div className="container mb-5">
-                        <div className="row">
-                            <div className="col-12 col-lg-5 text-center about-us-img">
-                                <img src={props.displayPicture} alt={`Founder-Img-${props.firstName + " " + props.lastName}`} />
-                            </div>
-                            <div className="col-12 col-lg-7 about-us-list">
-                                <h2 className="main-heading">{props.firstName + " " + props.lastName}</h2>
-                                    <div className="row about-us-info">
-                                        <div className="col-10 about-us-data">
-                                            <h3>{props.branch}</h3>
-                                            <p className="main-hero-para">
-                                            {props.description}
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                        </div>
-                                    </div>
-                                <br />
-                                <button className="btn-style btn-style-border" onClick={onLinkedInClick}>LinkedIn</button>
-                            </div>
-                        </div>
-                    </div>
-            </section>
+        <div className="col-lg-3 col-md-6 col-sm-6">
+            <div className="our-team">
+                <div className="pic">
+                    <img src={displayPicture} />
+                </div>
+                <div className="team-content">
+                    <h3 className="title">{'Founder ' + founderNo}</h3>
+                    <span className="post">{`${firstName} ${lastName}`}</span>
+                </div>
+                <ul className="social">
+                    <li>
+                        <i style={{color:"white", marginRight:"15px"}} className="bi bi-linkedin fa-2x" onClick={onLinkedInClick} />
+                    </li>
+                    <li>
+                        <i style={{color:"white"}} className="bi bi-github fa-2x" onClick={onGithubClick}/>
+                    </li>
+                </ul>
+            </div>
         </div>
     );
-};   
+};
 
 export default Founder;
