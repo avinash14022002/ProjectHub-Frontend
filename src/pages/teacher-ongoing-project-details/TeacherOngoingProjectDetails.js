@@ -44,16 +44,20 @@ const TeacherOngoingProjectDetails = ({ projectDetailsUrl, updateDeadlineUrl, cl
     const updateDeadline = (e) => { 
         e.preventDefault();
         
-        const user = JSON.parse(sessionStorage.getItem('login'));
+        if(window.confirm("Do you want to change the deadline for this project")) {
+            const user = JSON.parse(sessionStorage.getItem('login'));
 
-        axios.put(updateDeadlineUrl, {
-                projectID: projectId,
-                deadline: deadline.toString()
-            }, {
-            headers : {
-                "Authorization" : user.token
-            }
-        });
+            axios.put(updateDeadlineUrl, {
+                    projectID: projectId,
+                    deadline: deadline.toString()
+                }, {
+                headers : {
+                    "Authorization" : user.token
+                }
+            }).then((response) => {
+                window.alert("Deadline for the project has been successfully changed");
+            })
+        }
     }
 
     const updateStatus = (e)=>{
