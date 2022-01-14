@@ -1,78 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
-
-* {
-  font-family: 'Sora', sans-serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: #ffffff;
+.our-team-section {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.our-team-section:before {
+    position: absolute;
+    top: -0;
+    left: 0;
+    content: " ";
+    background-size: 100% 100px;
+    width: 100%;
+    height: 100px;
+    float: left;
+    z-index: 99;
+}
+.our-team {
+    padding: 30px 0 40px;
+    background: #f9f9f9;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 5px solid #00325a;
+}
+.our-team:hover{
+    border-bottom: 5px solid #2f2f2f;
 }
 
-  /*button styling*/
-
-.btn-style {
-  width: 10rem;
-  height: 3rem;
-  border-radius: 2rem;
-  color: #fff;
-  background-color:#566573;
-  font-size: 1rem;
+.our-team .pic{
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 50px;
+    z-index: 1;
+    position: relative;
 }
-
-.btn-style:first-child {
-  margin-right: 2rem;
+.our-team .pic:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #00325a;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
 }
-
-.btn-style:hover {
-  border: 0.1rem solid #566573;
-  background-color: #566573;
-  color: #566573;
-  box-shadow: 0 0.2rem 0.5rem rgba(32, 147, 241, 0.5);
+.our-team:hover .pic:before{
+ height: 100%;
+    background: #2f2f2f; 
+ }
+.our-team .pic:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ffffff00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: all 0.3s linear 0s;
 }
-
-.btn-style-border {
-  border: 0.1rem solid #566573;
-  background-color: #566573;
-  color: var(--primary-color);
-  box-shadow: 0 0.2rem 0.5rem rgba(57, 57, 58, 0.5);
+.our-team:hover .pic:after{
+    background: #7ab92d;
 }
-
-.btn-style-border:hover {
-  color: #fff;
-  background-color: #566573;
+.our-team .pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
+    position: relative;
+    z-index: 2;
 }
-
-
-/*info section*/
-
-.common-section {
-  margin: 7rem 0;
+.our-team:hover .pic img{
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
 }
-
-.about-us img {
-  width: 50%;
-  height: 90%;
-  margin-top: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.8rem 0.8rem;
-  border-radius: 0.9rem;
+.our-team .team-content{ margin-bottom: 30px; }
+.our-team .title{
+    font-size: 22px;
+    font-weight: 700;
+    color: #4e5052;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
 }
-
-.about-us .mini-title {
-  font-weight: bold;
-  margin: 3rem 0;
-  text-align: center;
-  font-size: 3 rem;
+.our-team .post{
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+    text-transform:capitalize;
 }
-
-.about-us .main-heading {
-  font-weight: bolder;
+.our-team .social{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #2f2f2f;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transition: all 0.5s ease 0s;
 }
-
-.about-us-data {
-  padding-left: 2rem;
+.our-team:hover .social{ bottom: 0; }
+.our-team .social li{ display: inline-block; }
+.our-team .social li a{
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: #fff;
+    transition: all 0.3s ease 0s;
 }
-
-.about-us .about-us-data p {
-  margin: 1rem 0;
+.our-team .social li a:hover{
+    color: #2f2f2f;
+    background: #f7f5ec;
 }
-  
+@media only screen and (max-width: 990px){
+    .our-team{ margin-bottom: 30px; }
+}
