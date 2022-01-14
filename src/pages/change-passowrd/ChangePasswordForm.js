@@ -30,13 +30,9 @@ const ChangePasswordForm = ({ role, url }) => {
                 "Authorization" : token
             }
         }).then((response) => {
-            console.log(response);
-            const confirmBox = window.confirm(
-                "Your password has been successfully changed"
-            )
+            window.alert("Your password has been successfully changed");
             history.goBack();
         }).catch((err) => { 
-            console.log(err.response);
             setErrors({...errors, enteredWrongOldPassword : "The Old Password entered by you is wrong"})
         });
     };
