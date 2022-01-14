@@ -32,6 +32,7 @@ const Navbar = (props) => {
           <NavLink to={props.route3}>
             {props.tab3}
           </NavLink>
+          {props.userAuthStatus && <Button variant="primary" style={{marginLeft: "20px", marginRight: "20px" }} onClick={props.handleChangePassword}>{props.buttonChangePassword}</Button>}
           {props.role === 'unassigned' ?
             (<Dropdown>
                 <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
@@ -44,7 +45,7 @@ const Navbar = (props) => {
                   <DropdownElement to='/admin/sign-in'>Admin SignIn</DropdownElement>
                 </Dropdown.Menu>
               </Dropdown>
-            ) : (<Button variant="primary" onClick={props.handleSignOut}>{props.buttonName}</Button>)
+            ) : (<Button variant="primary" onClick={props.handleSignOut}>{props.buttonSignOut}</Button>)
           }
         </NavMenu>
       </Nav>

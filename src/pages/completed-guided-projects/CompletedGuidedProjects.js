@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProfilePage from '../../components/profile/Profile';
-import ProjectsList from '../../components/projects-list/ProjectsList'
-import NoDataFound from '../../pages/no-data-found/NoDataFound'
+import ProjectsList from '../../components/projects-list/ProjectsList';
+import NoDataFound from '../../pages/no-data-found/NoDataFound';
 
 const CompletedGuidedProjects = ({ url, role }) => { 
-    const { userId } = useParams()
+    const { userId } = useParams();
 
     const [userProfile, setUserProfile] = useState({});
     const [userProjects, setUserProjects] = useState([]);

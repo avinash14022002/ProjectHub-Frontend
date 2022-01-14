@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GenericNavbar from './components/navbar/GenericNavbar';
 import Footer from './components/footer/Footer';
-import Home from './pages/home/Home'
-import About from './pages/about-us/About'
-import Contact from './pages/contact/Contact'
-import LoginForm from './pages/login/LoginForm'
+import Home from './pages/home/Home';
+import About from './pages/about-us/About';
+import Contact from './pages/contact/Contact';
+import LoginForm from './pages/login/LoginForm';
 import AllProjects from './pages/all-projects/AllProjects';
 import ProjectDetails from './pages/project-detailed-page/ProjectDetails';
 import CompletedGuidedProjects from './pages/completed-guided-projects/CompletedGuidedProjects';
@@ -17,6 +17,7 @@ import UploadStudents from './pages/upload-students/UploadStudents';
 import UploadTeachers from './pages/upload-teachers/UploadTeachers';
 import ExistingStudents from './pages/existing-students/ExistingStudents';
 import ExistingTeachers from './pages/existing-teachers/ExistingTeachers';
+import ChangePasswordForm from './pages/change-passowrd/ChangePasswordForm';
 import ResourceNotFound from './pages/404-error/ResourceNotFound';
 import { LoginProvider } from './contexts/LoginContext';
 import './App.css';
@@ -85,7 +86,13 @@ function App() {
               <Route exact path='/admin/sign-in'> 
                 <LoginForm role="admin" url="http://localhost:8080/auth/adminLogin" />
               </Route>
-              <Route component={ResourceNotFound}/>
+              <Route exact path='/student/change-password/:userId'>
+                <ChangePasswordForm role="student" url="http://localhost:8080/auth/changePassword" />
+              </Route>
+              <Route exact path='/teacher/change-password/:userId'>
+                <ChangePasswordForm role="teacher" url="http://localhost:8080/auth/changePassword" />
+              </Route>
+              <Route path="*" component={ResourceNotFound}/>
             </Switch>
           </div>
           <Footer />
