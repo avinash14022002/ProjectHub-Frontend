@@ -67,6 +67,8 @@ const TeacherCreateProject = ({ url }) => {
             headers : {
                 "Authorization" : user.token
             }
+        }).then((response) => {
+            window.alert("You have successfully created a new project");
         });
     }
 
@@ -226,7 +228,7 @@ const TeacherCreateProject = ({ url }) => {
                         e.preventDefault();
 
                         const confirmBox = window.confirm(
-                            "Do you want to submit data ?"
+                            "Do you want to create a new project?"
                         )
 
                         if(confirmBox === true){
