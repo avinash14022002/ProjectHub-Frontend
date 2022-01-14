@@ -38,7 +38,7 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
     }, [studentUrl, teacherUrl]);
     
     const filterProjects = (projects) => {
-        const filteredProjects = projects.filter(project => project.closed === '1')
+        const filteredProjects = projects.filter(project => project.closed === '1');
         return filteredProjects;
     };
 
@@ -47,7 +47,7 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
         setSearchTerm(searchWord);
 
         const newFilter = projectsData.filter((project) => {
-            return project.projectTitle.toLowerCase().includes(searchWord.trim().toLowerCase());
+            return project.projectTitle.includes(searchWord);
         });
 
         if (searchWord.trim() === "") {
@@ -64,8 +64,6 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
 
     if(projectsData.length === 0) {
         return <NoDataFound displayMessage="No projects available." />
-    } else if(projectsData.length !== 0 && filteredProjectsData.length === 0) {
-        return <NoDataFound displayMessage={`No projects available with this name ${searchTerm}.`} />
     } else {
         return (
             <div>
@@ -89,9 +87,12 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
                     </div>
                 </div>
                 <div className="MainContainer">
-                    <div className="Cards">
-                        <ProjectsList projects={filteredProjectsData} />
-                    </div>
+                    {projectsData.length !== 0 && filteredProjectsData.length === 0 
+                        ? <NoDataFound displayMessage={`No projects available with this project name`} />
+                        :   <div className="Cards">
+                                <ProjectsList projects={filteredProjectsData} />
+                            </div>
+                    }
                 </div>
             </div>
         );
