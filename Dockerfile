@@ -1,22 +1,15 @@
-# pull official base image
-FROM node:12.8.1
+FROM node:latest
 
-# set working directory
-WORKDIR /client
+RUN mkdir /app
+WORKDIR /app
 
-# add `/client/node_modules/.bin` to $PATH
-ENV PATH /client/node_modules/.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
+COPY package.json package-lock.json /app/
+RUN npm install
 
-# add app
-COPY . ./
+# Or if you're using Yarn
+# ADD package.json yarn.lock /app/
+# RUN yarn install
 
-# replace config file
-RUN cp ./src/configs.sit.json ./src/configs.json
-
-# start app
-CMD ["npm", "start"]
+COPY . /app/
