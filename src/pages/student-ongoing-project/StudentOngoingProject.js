@@ -88,26 +88,30 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
     const projectPostData = (e) =>{
         e.preventDefault();
         
-        const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
+        if(window.confirm("Are you sure you want to save this data ?")) {
+            const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
 
-        if(selectedProjectTags.length === 0) {
-            setProjectOutputData({...projectOutputData, projectTag1: null, projectTag2: null, projectTag3: null});
-        } else if(selectedProjectTags.length === 1) {
-            setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: null, projectTag3: null});
-        } else if(selectedProjectTags.length === 2) {
-            setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: selectedProjectTags[1], projectTag3: null});
-        } else if(selectedProjectTags.length === 3) {
-            setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: selectedProjectTags[1], projectTag3: selectedProjectTags[2]});
-        }
-
-        axios.post(updateProjectDetailsUrl, {...projectOutputData}, {
-            headers: {
-                "Authorization" : jwtToken
+            if(selectedProjectTags.length === 0) {
+                setProjectOutputData({...projectOutputData, projectTag1: null, projectTag2: null, projectTag3: null});
+            } else if(selectedProjectTags.length === 1) {
+                setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: null, projectTag3: null});
+            } else if(selectedProjectTags.length === 2) {
+                setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: selectedProjectTags[1], projectTag3: null});
+            } else if(selectedProjectTags.length === 3) {
+                setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: selectedProjectTags[1], projectTag3: selectedProjectTags[2]});
             }
-        }).then((response) => {
-        }).catch((err) => { 
-            console.log(err.response);
-        });
+
+            axios.post(updateProjectDetailsUrl, {...projectOutputData}, {
+                headers: {
+                    "Authorization" : jwtToken
+                }
+            }).then((response) => {
+                window.alert("You have successfully saved the project data");
+            }).catch((err) => { 
+                console.log(err.response);
+                window.alert("There was some error while saving the project data");
+            });
+        }
     }
 
     const uploadImage = (event) => {
