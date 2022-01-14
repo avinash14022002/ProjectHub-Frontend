@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './About.css'
 
 const Founder = ({founderNo, firstName, lastName, linkedInUrl, githubUrl, displayPicture}) => {
     const onLinkedInClick = (e) => {
@@ -26,7 +26,7 @@ const Founder = ({founderNo, firstName, lastName, linkedInUrl, githubUrl, displa
         <div className="col-lg-3 col-md-6 col-sm-6">
             <div className="our-team">
                 <div className="pic">
-                    <img src={displayPicture} />
+                    <img src={displayPicture} alt="Founder" />
                 </div>
                 <div className="team-content">
                     <h3 className="title">{'Founder ' + founderNo}</h3>
