@@ -20,7 +20,7 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
         }   
     }
 
-    const [optionTags, setOptionTags] = useState(["AI/ML", "App Development", "AR/VR", "Blockchain", "Cloud", "CyberSecurity", "IOT", "Mechatronics", "Robotics", "Web Development"]);
+    const optionTags = ["AI/ML", "App Development", "AR/VR", "Blockchain", "Cloud", "CyberSecurity", "IOT", "Mechatronics", "Robotics", "Web Development"];
     const [selectedProjectTags, setSelectedProjectTags] = useState([]);
 
     const [projectId, setProjectId] = useState(null);
@@ -53,7 +53,6 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
                 "Authorization" : `${user.token}`
             } 
         }).then((response) => {
-            console.log(response.data);
             return response.data;
         }).then((projectData) => {
             setProjectData(projectData);
@@ -72,23 +71,16 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
             }
             setProjectOutputData(data);
 
-            console.log(data.projectTag1);
-            console.log(data.projectTag2);
-            console.log(data.projectTag3);
-
             if(data.projectTag1 !== null) {
                 setSelectedProjectTags(oldTags=>[...oldTags, data.projectTag1]);
-                console.log(selectedProjectTags);
             }
 
             if(data.projectTag2 !== null) {
                 setSelectedProjectTags(oldTags=>[...oldTags, data.projectTag2]);
-                console.log(selectedProjectTags);
             }
 
             if(data.projectTag3 !== null) {
                 setSelectedProjectTags(oldTags=>[...oldTags, data.projectTag3]);
-                console.log(selectedProjectTags);
             }
         }); 
     }, [projectIdUrl, projectDetailsUrl, projectId]);
@@ -97,10 +89,6 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
         e.preventDefault();
         
         const jwtToken = JSON.parse(sessionStorage.getItem('login')).token;
-
-        console.log(projectOutputData);
-
-        console.log(selectedProjectTags);
 
         if(selectedProjectTags.length === 0) {
             setProjectOutputData({...projectOutputData, projectTag1: null, projectTag2: null, projectTag3: null});
@@ -112,16 +100,11 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
             setProjectOutputData({...projectOutputData, projectTag1: selectedProjectTags[0], projectTag2: selectedProjectTags[1], projectTag3: selectedProjectTags[2]});
         }
 
-        console.log(projectOutputData);
-
-        console.log(selectedProjectTags);
-
         axios.post(updateProjectDetailsUrl, {...projectOutputData}, {
             headers: {
                 "Authorization" : jwtToken
             }
         }).then((response) => {
-            console.log(response);
         }).catch((err) => { 
             console.log(err.response);
         });
@@ -136,7 +119,6 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
 
         axios.post("https://api.cloudinary.com/v1_1/drls2okca/image/upload", formData)
         .then((response) => {
-            console.log(response.data.url)
             setProjectOutputData({...projectOutputData, imageUrl: response.data.url});
         }).catch((err) => { 
             console.log(err);
@@ -154,7 +136,6 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
             "https://api.cloudinary.com/v1_1/drls2okca/auto/upload",
             formData
         ).then((response)=>{
-            console.log(response.data.url);
             setProjectOutputData({...projectOutputData, paperUrl: response.data.url});
         }).catch((err) => { 
             console.log(err);
@@ -172,7 +153,6 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
             "https://api.cloudinary.com/v1_1/drls2okca/auto/upload", 
             formData
         ).then((response)=>{
-            console.log(response.data.url);
             setProjectOutputData({...projectOutputData, pptUrl: response.data.url});
         }).catch((err) => { 
             console.log(err);
@@ -240,7 +220,7 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
                                     <input className='inputFields'
                                         id="projectTitle"
                                         name="projectTitle"
-                                        value={projectOutputData.projectTitle}
+                                        value={projectOutputData.projectTitle || ''}
                                         onChange={handleTextInput}
                                         placeholder="Enter Title"
                                     />
@@ -248,7 +228,7 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
                                     <input className='inputFields'
                                         id="projectDomain"
                                         name="projectDomain"
-                                        value={projectOutputData.projectDomain}
+                                        value={projectOutputData.projectDomain || ''}
                                         onChange={handleTextInput}
                                         placeholder="Enter Domain" 
                                     />
@@ -261,16 +241,10 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
                                         placeholder="Select Tags"
                                         isObject={false}
                                         onRemove={(event) => {
-                                            console.log(selectedProjectTags);
-                                            console.log(event);
                                             setSelectedProjectTags(event);
-                                            console.log(selectedProjectTags);
                                         }}
                                         onSelect={(event) => {
-                                            console.log(selectedProjectTags);
-                                            console.log(event);
                                             setSelectedProjectTags(event);
-                                            console.log(selectedProjectTags);
                                         }}
                                     />
                                 </Box>
@@ -281,7 +255,7 @@ const StudentOngoingProjects = ({ projectIdUrl, projectDetailsUrl, updateProject
                         <textarea className='inputFields'
                             id="description"
                             name="description"
-                            value={projectOutputData.description}
+                            value={projectOutputData.description || ''}
                             onChange={handleTextInput}
                             placeholder="Enter Description" 
                             style ={{width: '100%', height: "350px"}}
