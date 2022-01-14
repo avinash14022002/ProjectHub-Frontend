@@ -1,69 +1,88 @@
 import React from 'react';
-import Founder from './Founder';
+import Founders from './Founders';
 import './About.css'
 
 const About = () => {
     
-    const foundersData = [
-        {   
-            id : "11911404",
-            firstName : "Anubhav",
-            lastName : "Pabby", 
-            branch : "Computer Engineering",
-            description : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-            linkedInURL : "https://www.linkedin.com/in/anubhav-pabby-657a36161/",
-            displayPicture : "AboutUS.png"
-        },
-        {   
-            id : "11910219",
-            firstName : "Anjali",
-            lastName : "Asolkar", 
-            branch : "Computer Engineering",
-            description : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-            linkedInURL : "https://www.linkedin.com/in/anjali-asolkar/",
-            displayPicture : "AboutUS.png"
-        },
-        {   
-            id : "11911407",
-            firstName : "Avinash",
-            lastName : "Vijayvargiya", 
-            branch : "Computer Engineering",
-            description : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-            linkedInURL : "https://www.linkedin.com/in/avinash14022002/",
-            displayPicture : "AboutUS.png"
-        },
-        {   
-            id : "11911391",
-            firstName : "Dhanshree",
-            lastName : "Pajankar", 
-            branch : "Computer Engineering",
-            description : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-            linkedInURL : "https://www.linkedin.com/in/dhanshree-pajankar-74105b1a0/",
-            displayPicture : "AboutUS.png"
-        }
-    ];
-    
-    const imagesSrc = require.context('../../assets/about-us', true);
-
-    const listOfFounders = foundersData.map((founder) => {
-            const founderImgSrc = imagesSrc(`./${founder.displayPicture}`).default;
-
-            return <Founder 
-                key = {founder.id}
-                firstName = {founder.firstName} 
-                lastName = {founder.lastName} 
-                branch = {founder.branch} 
-                description = {founder.description}
-                linkedInURL = {founder.linkedInURL}
-                displayPicture = {founderImgSrc}
-            />
-        }
-    );
-
     return (
         <div className="common-section about-us">
-            <h1 className="mini-title">Our Team</h1>
-            {listOfFounders}              
+            <h1 style={{color:"white", textAlign:"center", margin:"20px", fontWeight:"bold"}} className="mini-title">Our Team</h1>
+                <section className="our-team-section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3 col-md-6 col-sm-6">
+                                <div className="our-team">
+                                    <div className="pic">
+                                        <img src="https://i.ibb.co/8x9xK4H/team.jpg"/>
+                                    </div>
+                                    <div className="team-content">
+                                        <h3 className="title">Team 1</h3>
+                                        <span className="post">Inhaber & Geschäftsführer</span>
+                                    </div>
+                                    <ul className="social">
+                                        <li>
+                                            {/* <a href="#" class="fa fa-linkedin"></a> */}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-3 col-md-6 col-sm-6">
+                                <div className="our-team">
+                                    <div className="pic">
+                                        <img src="https://i.ibb.co/8x9xK4H/team.jpg"/>
+                                    </div>
+                                    <div className="team-content">
+                                        <h3 className="title">Team 2</h3>
+                                        <span className="post">Stellvertretender  Geschäftsführer</span>
+                                    </div>
+                                    <ul class="social">
+                                        <li>
+                                            {/* <a href="#" class="fa fa-linkedin"></a> */}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="col-lg-3 col-md-6 col-sm-6">
+                                <div className="our-team">
+                                    <div className="pic">
+                                        <img src="https://i.ibb.co/8x9xK4H/team.jpg"/>
+                                    </div>
+                                    <div className="team-content">
+                                        <h3 className="title">Team 3</h3>
+                                        <span className="post">Dipl. Physiotherapeut </span>
+                                    </div>
+                                    <ul className="social">
+                                        <li>
+                                            <i style={{color:"white", marginRight:"15px"}} className="bi bi-linkedin fa-2x"/>
+                                        </li>
+                                        <li>
+                                            <i style={{color:"white"}} className="bi bi-github fa-2x"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-3 col-md-6 col-sm-6">
+                                <div className="our-team">
+                                    <div className="pic">
+                                        <img src="https://i.ibb.co/8x9xK4H/team.jpg"/>
+                                    </div>
+                                    <div className="team-content">
+                                        <h3 className="title">Team 4</h3>
+                                        <span className="post">Dipl. Physiotherapeut </span>
+                                    </div>
+                                    <ul className="social">
+                                        <li>
+                                            {/* <a href="#" class="fa fa-linkedin"></a> */}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+           
         </div>
     );
 };
