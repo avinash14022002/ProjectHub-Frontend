@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ CU-1ym3r0a_DevOps-Docker-Image_Avinash-Vijayvargiya ]
   pull_request:
-    branches: [ main ]
+    branches: [ CU-1ym3r0a_DevOps-Docker-Image_Avinash-Vijayvargiya ]
 
 jobs:
   build:
