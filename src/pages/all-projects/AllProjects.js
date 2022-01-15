@@ -38,7 +38,7 @@ const AllProjects = ({ studentUrl, teacherUrl }) => {
     }, [studentUrl, teacherUrl]);
     
     const filterProjects = (projects) => {
-        const filteredProjects = projects.filter(project => project.closed === '1');
+        const filteredProjects = projects.filter(project => project.closed === '1' && project.projectTitle !== null);
         return filteredProjects;
     };
 

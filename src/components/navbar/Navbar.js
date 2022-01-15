@@ -32,7 +32,7 @@ const Navbar = (props) => {
           <NavLink to={props.route3}>
             {props.tab3}
           </NavLink>
-          {props.userAuthStatus && <Button variant="primary" style={{marginLeft: "20px", marginRight: "20px" }} onClick={props.handleChangePassword}>{props.buttonChangePassword}</Button>}
+          {props.userAuthStatus && (props.role==='student' || props.role==='teacher') &&<Button variant="primary" style={{marginLeft: "20px", marginRight: "20px" }} onClick={props.handleChangePassword}>{props.buttonChangePassword}</Button>}
           {props.role === 'unassigned' ?
             (<Dropdown>
                 <Dropdown.Toggle variant="primary" id="dropdown-button-dark-example1">
