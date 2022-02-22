@@ -29,7 +29,7 @@ const Founder = ({founderNo, firstName, lastName, linkedInUrl, githubUrl, displa
                     <img src={displayPicture} alt="Founder" />
                 </div>
                 <div className="team-content">
-                    <h3 className="title">{'Founder ' + founderNo}</h3>
+                    <h3 className="title">{'Developer'}</h3>
                     <span className="post">{`${firstName} ${lastName}`}</span>
                 </div>
                 <ul className="social">
