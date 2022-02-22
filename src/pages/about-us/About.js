@@ -56,7 +56,7 @@ const About = () => {
             const founderImgSrc = imagesSrc(`./${founder.displayPicture}`).default;
 
             return <Founder 
-                key={founder.key}
+                key={founder.founderNo}
                 founderNo={founder.founderNo}
                 founderId={founder.founderId}
                 firstName={founder.firstName} 
@@ -73,12 +73,12 @@ const About = () => {
     return (
         <div className="common-section about-us">
             <h1 style={{color:"white", textAlign:"center", margin:"20px", fontWeight:"bold"}} className="mini-title">Our Team</h1>
-                <section className="our-team-section">
-                    <div className="container">
-                        <div className="row">
-                            {listOfFounders} 
-                        </div>
+            <section className="our-team-section">
+                <div className="container">
+                    <div className="row">
+                        {listOfFounders} 
                     </div>
+                </div>
             </section>
         </div>
     );
