@@ -98,8 +98,8 @@ function App() {
               </ProtectedRoute>
               <Route path="*" component={ResourceNotFound}/>
             </Switch>
-            <Footer />
           </div>
+          <Footer />
         </div>
       </LoginProvider>
     </Router>
