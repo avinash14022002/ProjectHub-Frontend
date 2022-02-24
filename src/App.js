@@ -25,7 +25,6 @@ import { LoginProvider } from './contexts/LoginContext';
 import './App.css';
 
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_DOMAIN;
-console.log(axios.defaults.baseURL, process.env.REACT_APP_BACKEND_DOMAIN);
 
 function App() {
   return (
