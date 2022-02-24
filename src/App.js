@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import GenericNavbar from './components/navbar/GenericNavbar';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
@@ -33,50 +34,6 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route exact path='/contact' component={Contact} />
-              <Route exact path='/all-projects'>
-                <AllProjects studentUrl="http://localhost:8080/api/studentProject" teacherUrl="http://localhost:8080/api/teacherProject" />
-              </Route>
-              <Route exact path='/project-details/:projectId'>
-                <ProjectDetails studentUrl="http://localhost:8080/api/projectDetails" teacherUrl="http://localhost:8080/api/teacherProjectDetails" />
-              </Route>
-              <Route exact path='/student/completed-projects/:userId'>
-                <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" role="student" />
-              </Route>
-              <Route exact path='/student/ongoing-project'>
-                <StudentOngoingProject 
-                    projectIdUrl="http://localhost:8080/api/studentOngoing" 
-                    projectDetailsUrl="http://localhost:8080/api/projectDetails" 
-                    updateProjectDetailsUrl="http://localhost:8080/api/studentProject" 
-                />
-              </Route>
-              <Route exact path='/teacher/guided-projects/:userId'>
-                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
-              </Route>
-              <Route exact path='/teacher/ongoing-projects/:userId'>
-                <TeacherOngoingProjects url="http://localhost:8080/api/teacherOngoing" />
-              </Route>
-              <Route exact path='/teacher/create-project'>
-                <TeacherCreateProject url="http://localhost:8080/api/addNewProject" />
-              </Route>
-              <Route exact path='/teacher/ongoing-projects/project-details/:projectId'>
-                <TeacherOngoingProjectDetails 
-                  projectDetailsUrl="http://localhost:8080/api/teacherProjectDetails" 
-                  updateDeadlineUrl="http://localhost:8080/api/updateDeadline"
-                  closeProjectUrl="http://localhost:8080/api/closeProject">
-                </TeacherOngoingProjectDetails>
-              </Route>
-              <Route exact path='/admin/upload-students'>
-                <UploadStudents uploadUrl="http://localhost:8080/api/uploadStudent"/>
-              </Route>
-              <Route exact path='/admin/upload-teachers'>
-                <UploadTeachers uploadUrl="http://localhost:8080/api/uploadTeacher"/>
-              </Route>
-              <Route exact path='/admin/existing-students'>
-                <ExistingStudents fetchUrl="http://localhost:8080/api/students" downloadUrl="http://localhost:8080/api/student/download/students.csv" />
-              </Route>
-              <Route exact path='/admin/existing-teachers'>
-                <ExistingTeachers fetchUrl="http://localhost:8080/api/teacher" downloadUrl="http://localhost:8080/api/teacher/download/teachers.csv" />
-              </Route>
               <Route exact path='/student/sign-in'> 
                 <LoginForm role="student" url="http://localhost:8080/auth/studentLogin" />
               </Route>
@@ -86,12 +43,56 @@ function App() {
               <Route exact path='/admin/sign-in'> 
                 <LoginForm role="admin" url="http://localhost:8080/auth/adminLogin" />
               </Route>
-              <Route exact path='/student/change-password/:userId'>
+              <ProtectedRoute exact path='/all-projects'>
+                <AllProjects studentUrl="http://localhost:8080/api/studentProject" teacherUrl="http://localhost:8080/api/teacherProject" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/project-details/:projectId'>
+                <ProjectDetails studentUrl="http://localhost:8080/api/projectDetails" teacherUrl="http://localhost:8080/api/teacherProjectDetails" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/student/completed-projects/:userId'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/studentProfileDetails" role="student" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/student/ongoing-project'>
+                <StudentOngoingProject 
+                    projectIdUrl="http://localhost:8080/api/studentOngoing" 
+                    projectDetailsUrl="http://localhost:8080/api/projectDetails" 
+                    updateProjectDetailsUrl="http://localhost:8080/api/studentProject" 
+                />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/teacher/guided-projects/:userId'>
+                <CompletedGuidedProjects url="http://localhost:8080/api/teacherProfile" role="teacher" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/teacher/ongoing-projects/:userId'>
+                <TeacherOngoingProjects url="http://localhost:8080/api/teacherOngoing" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/teacher/create-project'>
+                <TeacherCreateProject url="http://localhost:8080/api/addNewProject" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/teacher/ongoing-projects/project-details/:projectId'>
+                <TeacherOngoingProjectDetails 
+                  projectDetailsUrl="http://localhost:8080/api/teacherProjectDetails" 
+                  updateDeadlineUrl="http://localhost:8080/api/updateDeadline"
+                  closeProjectUrl="http://localhost:8080/api/closeProject">
+                </TeacherOngoingProjectDetails>
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/admin/upload-students'>
+                <UploadStudents uploadUrl="http://localhost:8080/api/uploadStudent"/>
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/admin/upload-teachers'>
+                <UploadTeachers uploadUrl="http://localhost:8080/api/uploadTeacher"/>
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/admin/existing-students'>
+                <ExistingStudents fetchUrl="http://localhost:8080/api/students" downloadUrl="http://localhost:8080/api/student/download/students.csv" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/admin/existing-teachers'>
+                <ExistingTeachers fetchUrl="http://localhost:8080/api/teacher" downloadUrl="http://localhost:8080/api/teacher/download/teachers.csv" />
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/student/change-password/:userId'>
                 <ChangePasswordForm role="student" url="http://localhost:8080/auth/changePassword" />
-              </Route>
-              <Route exact path='/teacher/change-password/:userId'>
+              </ProtectedRoute>
+              <ProtectedRoute exact path='/teacher/change-password/:userId'>
                 <ChangePasswordForm role="teacher" url="http://localhost:8080/auth/changePassword" />
-              </Route>
+              </ProtectedRoute>
               <Route path="*" component={ResourceNotFound}/>
             </Switch>
           </div>

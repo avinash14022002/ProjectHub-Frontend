@@ -45,12 +45,8 @@ export const LoginProvider = (props) => {
             if(user !== null) {
               setUserAuthStatus(true);
               setUserInfo(JSON.parse(user));
-              
-              if(user.role === 'admin') {
-                history.push('/admin/existing-students');
-              } else {
-                history.push('/all-projects');
-              }
+          
+              history.push('/all-projects');
             }
         }).catch(function (error) {
             if(error.response && error.response.status === 403) {

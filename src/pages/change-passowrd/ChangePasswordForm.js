@@ -50,9 +50,7 @@ const ChangePasswordForm = ({ role, url }) => {
                 id: changeUserPassword.id,
                 oldPassword: changeUserPassword.oldPassword,
                 newPassword: changeUserPassword.newPassword,
-            }, jwtToken);
-
-            
+            }, jwtToken);     
         }
     };
 
@@ -111,7 +109,7 @@ const ChangePasswordForm = ({ role, url }) => {
                 </form>
             </div>
         </div>
-      );
+    );
 };
 
 export default ChangePasswordForm;
